@@ -2,6 +2,8 @@ version: '2'
 services:
   rails:
     image: rails:5
+    environment:
+      TZ: Japan
     working_dir: /usr/src/app
     volumes:
       - .:/usr/src/app
@@ -16,8 +18,11 @@ services:
     environment:
       POSTGRES_USER: app
       POSTGRES_PASSWORD:
+      TZ: Japan
     ports:
       - '5432:5432'
+    volumes:
+      - ./backup:/backup
     volumes_from:
       - datastore
   nginx:
