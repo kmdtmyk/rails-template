@@ -23,7 +23,7 @@ default: &default
 
   username: app
   password:
-  host: postgres
+  host: db
   port: 5432
 
 development:

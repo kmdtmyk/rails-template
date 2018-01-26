@@ -1,6 +1,6 @@
 version: '2'
 services:
-  rails:
+  app:
     image: rails:5
     user: '1000:1000'
     environment:
@@ -13,8 +13,8 @@ services:
       - '3000:3000'
     command: rails s -b 0.0.0.0
     depends_on:
-      - postgres
-  postgres:
+      - db
+  db:
     image: postgres:9.6
     environment:
       POSTGRES_USER: app
@@ -23,10 +23,9 @@ services:
     ports:
       - '5432:5432'
     volumes:
+      - db:/var/lib/postgresql/data
       - ./backup:/backup
-    volumes_from:
-      - datastore
-  nginx:
+  web:
     image: nginx:1.11
     ports:
       - '80:80'
@@ -34,10 +33,6 @@ services:
       - ./nginx:/etc/nginx
       - ./log/nginx:/var/log/nginx
     depends_on:
-      - rails
-  datastore:
-    image: busybox
-    volumes:
-      - postgres:/var/lib/postgresql/data
+      - app
 volumes:
-  postgres:
+  db:
