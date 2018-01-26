@@ -1,7 +1,7 @@
 ```bash
 git clone <url>
-cd rails-template
-docker-compose run rails bundle install
-docker-compose run rails rake db:create
+cd <name>
+docker-compose run --rm app bundle install
+docker-compose run --rm app rails db:create
 docker-compose up
 ```
