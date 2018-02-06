@@ -1,8 +1,7 @@
 version: '2'
 services:
   app:
-    image: rails:5
-    user: '1000:1000'
+    build: './docker/app'
     environment:
       TZ: Japan
     working_dir: /usr/src/app
