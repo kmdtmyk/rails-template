@@ -27,6 +27,8 @@ services:
       - ./backup:/backup
   web:
     image: nginx:1.11
+    environment:
+      TZ: Japan
     ports:
       - '80:80'
     volumes:
