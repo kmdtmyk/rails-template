@@ -1,7 +1,12 @@
-FROM rails:5
+FROM ruby:2.4
 
-# install sudo
-RUN apt-get update && apt-get install -y sudo
+RUN apt-get update -qq && \
+    apt-get install -y \
+      build-essential \
+      libpq-dev \
+      postgresql-client \
+      nodejs \
+      sudo
 
 # add user
 RUN groupadd -g 1000 docker && \
