@@ -1,9 +1,9 @@
-version: '2'
+version: '3'
 services:
   app:
     build: './docker/app'
     environment:
-      TZ: Japan
+      TZ: Asia/Tokyo
     working_dir: /usr/src/app
     volumes:
       - .:/usr/src/app
@@ -18,7 +18,7 @@ services:
     environment:
       POSTGRES_USER: app
       POSTGRES_PASSWORD:
-      TZ: Japan
+      TZ: Asia/Tokyo
     ports:
       - '5432:5432'
     volumes:
@@ -27,7 +27,7 @@ services:
   web:
     image: nginx:1.11
     environment:
-      TZ: Japan
+      TZ: Asia/Tokyo
     ports:
       - '80:80'
     volumes:
