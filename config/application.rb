@@ -13,6 +13,7 @@ module App
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
     config.generators do |g|
       g.test_framework false
     end
