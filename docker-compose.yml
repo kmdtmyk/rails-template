@@ -8,10 +8,7 @@ services:
         gid: ${APP_GID}
     environment:
       TZ: Asia/Tokyo
-      RAILS_ENV: ${RAILS_ENV}
-      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-      RAILS_SERVE_STATIC_FILES: ${RAILS_SERVE_STATIC_FILES}
-      RAILS_FORCE_SSL: ${RAILS_FORCE_SSL}
+    env_file: .env
     working_dir: /usr/src/app
     volumes:
       - .:/usr/src/app
@@ -24,8 +21,8 @@ services:
   db:
     image: postgres:9.6.8
     environment:
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       TZ: Asia/Tokyo
     ports:
       - '5432:5432'
