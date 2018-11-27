@@ -30,3 +30,7 @@
 
 # dotenv
 .env
+
+# backup
+/backup/*
+!/backup/.keep
