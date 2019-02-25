@@ -36,6 +36,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'rack-dev-mark', '~> 0.7.7'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'slim', '~> 4.0', '>= 4.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
