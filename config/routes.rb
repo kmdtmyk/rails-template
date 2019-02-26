@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'root#index'
 
+  resources :books, except: [:show]
+
   resource :health_check, only: [:show]
 
 end

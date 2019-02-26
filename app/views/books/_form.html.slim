@@ -1,0 +1,20 @@
+= form_with(model: book, local: true) do |form|
+  - if book.errors.any?
+    #error_explanation
+      h2
+        = pluralize(book.errors.count, "error")
+        | prohibited this book from being saved:
+      ul
+        - book.errors.full_messages.each do |message|
+          li= message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :price
+    = form.number_field :price
+  .field
+    = form.label :release_date
+    = form.date_select :release_date
+  .actions
+    = form.submit

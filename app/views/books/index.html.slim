@@ -1,0 +1,19 @@
+p#notice= notice
+h1 Books
+table
+  thead
+    tr
+      th Name
+      th Price
+      th Release date
+      th colspan=2
+  tbody
+    - @books.each do |book|
+      tr
+        td= book.name
+        td= book.price
+        td= book.release_date
+        td= edit_link_to 'Edit', edit_book_path(book)
+        td= delete_link_to 'Destroy', book
+br
+= link_to 'New Book', new_book_path
