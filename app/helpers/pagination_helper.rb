@@ -22,11 +22,8 @@ module PaginationHelper
   end
 
   def paginate(page)
-    if browser.device.mobile?
-      capture{ render 'shared/mobile_paginator', page: page }
-    else
-      super
-    end
+    tag.div(class: 'd-none d-md-block'){ super } +
+    tag.div(class: 'd-md-none'){ render 'shared/mobile_paginator', page: page }
   end
 
 end
