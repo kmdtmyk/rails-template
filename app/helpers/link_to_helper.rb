@@ -5,7 +5,7 @@ module LinkToHelper
   def new_link_to(name, url, options = nil)
     option ||= {}
     default_option = {
-      class: '',
+      class: 'btn btn-primary',
     }
     options = default_option.merge(option)
     link_to name, url, options
@@ -14,7 +14,7 @@ module LinkToHelper
   def edit_link_to(name, url, options = nil)
     option ||= {}
     default_option = {
-      class: '',
+      class: 'btn btn-primary',
     }
     options = default_option.merge(option)
     link_to name, url, options
@@ -23,7 +23,7 @@ module LinkToHelper
   def delete_link_to(name, url, option = nil)
     option ||= {}
     default_option = {
-      # class: 'btn btn-danger btn-sm',
+      class: 'btn btn-danger',
       method: :delete,
       data: { title: '確認',
         confirm: '選択した項目を削除しますか？',

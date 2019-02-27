@@ -1,0 +1,10 @@
+.table{
+
+  th, td{
+    &.btn-cell{
+      padding: 2px !important;
+      vertical-align: middle;
+    }
+  }
+
+}

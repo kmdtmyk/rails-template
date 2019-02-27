@@ -2,7 +2,8 @@
 - breadcrumb :books
 
 p#notice= notice
-table
+
+table.table
   thead
     tr
       th Name
@@ -15,7 +16,7 @@ table
         td= book.name
         td= book.price
         td= book.release_date
-        td= edit_link_to 'Edit', edit_book_path(book)
-        td= delete_link_to 'Destroy', book
-br
-= link_to 'New Book', new_book_path
+        td.btn-cell= edit_link_to 'Edit', edit_book_path(book)
+        td.btn-cell= delete_link_to 'Destroy', book
+
+= new_link_to 'New Book', new_book_path
