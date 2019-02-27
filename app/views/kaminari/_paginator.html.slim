@@ -1,5 +1,5 @@
 = paginator.render do
-  nav
+  nav.d-none.d-md-block
     ul.pagination
       == first_page_tag unless current_page.first?
       == prev_page_tag unless current_page.first?
@@ -10,3 +10,24 @@
           == gap_tag
       == next_page_tag unless current_page.last?
       == last_page_tag unless current_page.last?
+
+  ruby:
+    first_page_url = Kaminari::Helpers::FirstPage.new(@template, @options).url
+    prev_page_url = Kaminari::Helpers::PrevPage.new(@template, @options).url
+    next_page_url = Kaminari::Helpers::NextPage.new(@template, @options).url
+    last_page_url = Kaminari::Helpers::LastPage.new(@template, @options).url
+    total_page = @options[:total_pages]
+
+  nav.d-md-none
+    ul.pagination
+      li.page-item.flex-fill.text-center class=('disabled' if current_page.first?)
+        = link_to icon('fas', 'backward'), first_page_url, class: 'page-link'
+      li.page-item.flex-fill.text-center class=('disabled' if current_page.first?)
+        = link_to icon('fas', 'caret-left'), prev_page_url, class: 'page-link'
+      li.page-item.flex-fill.text-center.disabled
+        span.page-link
+          = "#{format_number current_page.number} / #{format_number total_page}"
+      li.page-item.flex-fill.text-center class=('disabled' if current_page.last?)
+        = link_to icon('fas', 'caret-right'), next_page_url, class: 'page-link'
+      li.page-item.flex-fill.text-center class=('disabled' if current_page.last?)
+        = link_to icon('fas', 'forward'), last_page_url, class: 'page-link'

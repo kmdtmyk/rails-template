@@ -21,9 +21,4 @@ module PaginationHelper
     paginate(page)
   end
 
-  def paginate(page)
-    tag.div(class: 'd-none d-md-block'){ super } +
-    tag.div(class: 'd-md-none'){ render 'shared/mobile_paginator', page: page }
-  end
-
 end
