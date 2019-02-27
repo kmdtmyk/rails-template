@@ -16,6 +16,9 @@
 @import './bootstrap/form';
 @import './bootstrap/table';
 
+html, body{
+  height: 100%;
+}
 
 @for $i from 1 through 10 {
   .vw-#{$i * 10} { width: #{$i * 10}vw !important; }
