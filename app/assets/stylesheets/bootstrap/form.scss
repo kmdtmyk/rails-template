@@ -1,0 +1,13 @@
+.form-row{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.form-group{
+  margin-right: 0.7rem;
+  > label:first-child{
+    font-size: 90%;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+}

@@ -7,14 +7,14 @@
       ul
         - book.errors.full_messages.each do |message|
           li= message
-  .field
-    = form.label :name
-    = form.text_field :name
-  .field
-    = form.label :price
-    = form.number_field :price
-  .field
-    = form.label :release_date
-    = form.date_select :release_date
-  .actions
-    = form.submit
+  .form-row
+    .form-group
+      = form.label :name
+      = form.text_field :name
+    .form-group
+      = form.label :price
+      = form.number_field :price
+    .form-group
+      = form.label :release_date
+      = form.date_field :release_date
+  = form.submit
