@@ -39,7 +39,6 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'slim', '~> 4.0', '>= 4.0.1'
 gem 'gretel', '~> 3.0', '>= 3.0.9'
 gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
-gem 'browser', '~> 2.5', '>= 2.5.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
