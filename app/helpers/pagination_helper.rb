@@ -15,9 +15,16 @@ module PaginationHelper
     if page.empty?
       return page_entries_info(page)
     end
+
+    if browser.device.mobile?
+      pagination = capture{ render 'shared/mobile_paginator', page: page }
+    else
+      pagination = paginate(page)
+    end
+
     page_entries_info(page) +
     capture{ yield page } +
-    paginate(page)
+    pagination
   end
 
 end

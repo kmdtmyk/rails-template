@@ -1,0 +1,11 @@
+nav
+  ul.pagination
+    li.page-item.flex-fill.text-center class=('disabled' if page.first_page?)
+      = link_to path_to_prev_page(page), class: 'page-link' do
+       = icon 'fas', 'caret-left'
+    li.page-item.flex-fill.text-center.disabled
+      span.page-link
+        = "#{format_number page.current_page} / #{format_number page.total_pages}"
+    li.page-item.flex-fill.text-center class=('disabled' if page.last_page?)
+      = link_to path_to_next_page(page), class: 'page-link' do
+       = icon 'fas', 'caret-right'
