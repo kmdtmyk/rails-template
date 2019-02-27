@@ -1,2 +1,74 @@
-ul
-  li= link_to 'Book List', books_path
+scss:
+  .examples{
+    input:not(:first-child){
+      margin-top: 4px;
+    }
+    button:not(:first-child){
+      margin-left: 4px;
+    }
+  }
+
+h2 Examples
+
+h3 Input
+.examples
+  input.form-control.form-control-sm placeholder='form-control-sm'
+  input.form-control.form-control-md placeholder='form-control-md'
+  input.form-control.form-control-lg placeholder='form-control-lg'
+  input.form-control placeholder='form-control'
+
+hr
+
+h3 Button
+.examples
+  button.btn.btn-primary.btn-sm small
+  button.btn.btn-primary.btn-md middle
+  button.btn.btn-primary.btn-lg large
+  button.btn.btn-primary normal
+
+hr
+
+h3 Table
+.examples
+  div
+    label small
+    table.table.table-sm
+      thead
+        tr
+          th id
+          th name
+          th value
+      tbody
+        - 1.upto 5 do |i|
+          tr
+            td= i
+            td= "name#{i}"
+            td= "value#{i}"
+  div
+    label middle
+    table.table.table-md
+      thead
+        tr
+          th id
+          th name
+          th value
+      tbody
+        - 1.upto 5 do |i|
+          tr
+            td= i
+            td= "name#{i}"
+            td= "value#{i}"
+  div
+    label normal
+    table.table
+      thead
+        tr
+          th id
+          th name
+          th value
+      tbody
+        - 1.upto 5 do |i|
+          tr
+            td= i
+            td= "name#{i}"
+            td= "value#{i}"
