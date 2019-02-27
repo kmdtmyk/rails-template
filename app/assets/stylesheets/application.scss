@@ -15,3 +15,9 @@
 @import './bootstrap/desktop';
 @import './bootstrap/form';
 @import './bootstrap/table';
+
+
+@for $i from 1 through 10 {
+  .vw-#{$i * 10} { width: #{$i * 10}vw !important; }
+  .vh-#{$i * 10} { height: #{$i * 10}vh !important; }
+}
