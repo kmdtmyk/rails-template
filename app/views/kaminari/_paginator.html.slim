@@ -21,13 +21,13 @@
   nav.d-md-none
     ul.pagination
       li.page-item.flex-fill.text-center class=('disabled' if current_page.first?)
-        = link_to icon('fas', 'backward'), first_page_url, class: 'page-link'
+        = link_to icon('fas', 'angle-double-left'), first_page_url, class: 'page-link'
       li.page-item.flex-fill.text-center class=('disabled' if current_page.first?)
-        = link_to icon('fas', 'caret-left'), prev_page_url, class: 'page-link'
+        = link_to icon('fas', 'angle-left'), prev_page_url, class: 'page-link'
       li.page-item.flex-fill.text-center.disabled
         span.page-link
           = "#{format_number current_page.number} / #{format_number total_page}"
       li.page-item.flex-fill.text-center class=('disabled' if current_page.last?)
-        = link_to icon('fas', 'caret-right'), next_page_url, class: 'page-link'
+        = link_to icon('fas', 'angle-right'), next_page_url, class: 'page-link'
       li.page-item.flex-fill.text-center class=('disabled' if current_page.last?)
-        = link_to icon('fas', 'forward'), last_page_url, class: 'page-link'
+        = link_to icon('fas', 'angle-double-right'), last_page_url, class: 'page-link'
