@@ -27,7 +27,7 @@
         a.page-link href=prev_page_url
           i.fas.fa-angle-left
       li.page-item.flex-fill.text-center.disabled
-        span.page-link
+        span.page-link.text-body
           = "#{format_number current_page.number} / #{format_number total_page}"
       li.page-item.flex-fill.text-center class=('disabled' if current_page.last?)
         a.page-link href=next_page_url
