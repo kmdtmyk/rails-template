@@ -21,8 +21,8 @@ $border-color: #dee2e6;
 
 .table-sticky{
   $alternate-background-color: #f2f2f2;
-
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: 1rem;
   border: 1px solid $border-color;
 
