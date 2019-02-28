@@ -21,6 +21,7 @@ input[type='checkbox']{
     border: 1px solid rgb(206, 212, 218);
     top: -8%;
     left: -6%;
+    transition-duration: 0.2s;
   }
 
   &:disabled::before{
