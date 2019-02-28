@@ -5,9 +5,24 @@
 
 .form-group{
   margin-right: 0.7rem;
+
   > label:first-child{
     font-size: 90%;
     font-weight: bold;
     margin-bottom: 0;
+
+    span{
+      font-weight: initial;
+    }
+  }
+
+}
+
+.form-inline{
+  label, input, select{
+    margin-right: 0.5rem;
+  }
+  .form-group{
+    margin-bottom: 0.5rem;
   }
 }

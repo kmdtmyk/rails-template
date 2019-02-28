@@ -100,9 +100,10 @@ h3 Form
   .form-inline
     .form-group
       label date
-      input.form-control type='date'
-      span 〜
-      input.form-control type='date'
+      div.d-flex.align-items-center
+        input.form-control type='date'
+        span 〜
+        input.form-control type='date'
     .form-group
       button.btn.btn-dark today
       button.btn.btn-dark week
@@ -112,4 +113,4 @@ h3 Form
       .form-group
         label input#{i}
         input.form-control
-    button.btn.btn-md.btn-primary type='submit' Submit
+  button.btn.btn-md.btn-primary type='submit' Submit
