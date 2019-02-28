@@ -22,4 +22,8 @@ module FontAwesomeHelper
     html
   end
 
+  def fas(*args)
+    fa_icon('fas', *args)
+  end
+
 end
