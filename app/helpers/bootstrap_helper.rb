@@ -27,6 +27,11 @@ module BootstrapHelper
     super
   end
 
+  def search_field(*args)
+    set_default_classes(args, 2, %w(form-control))
+    super
+  end
+
   def text_area(*args)
     set_default_classes(args, 2, %w(form-control))
     super

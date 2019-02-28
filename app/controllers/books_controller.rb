@@ -4,7 +4,7 @@ class BooksController < BaseController
   before_action :set_book, only: [:edit, :update, :destroy]
 
   def index
-    @books = Book.all
+    @books = Book.search(params[:q])
   end
 
   def new
