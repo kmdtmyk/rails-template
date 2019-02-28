@@ -8,6 +8,12 @@ scss:
     }
   }
 
+  .form-example{
+    border: 2px solid #dee2e6;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
 h2 Examples
 
 h3 Input
@@ -72,3 +78,38 @@ h3 Table
             td= i
             td= "name#{i}"
             td= "value#{i}"
+
+hr
+
+h3 Form
+
+.form-example
+  .form-group
+    label Email address
+    input.form-control type='email' placeholder='Enter email'
+  .form-group
+    label Password
+    input.form-control type='password' placeholder='Password'
+  .form-group.form-check
+    label
+      input.form-check-input type='checkbox'
+      span Check me out
+  button.btn.btn-md.btn-primary type='submit' Submit
+
+.form-example
+  .form-inline
+    .form-group
+      label date
+      input.form-control type='date'
+      span 〜
+      input.form-control type='date'
+    .form-group
+      button.btn.btn-dark today
+      button.btn.btn-dark week
+      button.btn.btn-dark month
+  .form-inline
+    - 1.upto 5 do |i|
+      .form-group
+        label input#{i}
+        input.form-control
+    button.btn.btn-md.btn-primary type='submit' Submit
