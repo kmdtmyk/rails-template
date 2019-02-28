@@ -25,7 +25,9 @@ html
   body
     .sticky-top
       = render 'shared/navbar'
-    .container.mt-3.mb-5
+    .container.mt-3
       = render 'shared/flash_message'
       = render 'shared/breadcrumb'
       = yield
+      div style='height: 2rem;'
+      / safari ignore the last margin-bottom
