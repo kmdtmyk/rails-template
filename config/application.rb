@@ -26,7 +26,7 @@ module App
     # rack dev mark
     if ENV['RACK_DEV_MARK'].present?
       config.rack_dev_mark.enable = true
-      config.rack_dev_mark.env = ENV['RACK_DEV_MARK']
+      config.rack_dev_mark.env = "#{ENV['RACK_DEV_MARK']}".force_encoding('UTF-8')
       config.rack_dev_mark.theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(
         position: ENV['RACK_DEV_MARK_POSITION'],
         fixed: true,
