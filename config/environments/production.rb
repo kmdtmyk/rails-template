@@ -92,10 +92,13 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    logger = ActiveSupport::Logger.new(STDOUT)
+  else
+    logger = ActiveSupport::Logger.new("log/#{Rails.env}.log", ENV['RAILS_LOG_SHIFT_AGE'].to_i, 10.megabyte)
   end
+
+  logger.formatter = config.log_formatter
+  config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
