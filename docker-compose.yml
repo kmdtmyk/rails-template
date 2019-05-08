@@ -9,9 +9,9 @@ services:
     environment:
       TZ: Asia/Tokyo
     env_file: .env
-    working_dir: /usr/src/app
+    working_dir: /app
     volumes:
-      - .:/usr/src/app
+      - .:/app
       - ./vendor/bundle:/usr/local/bundle
     command: bash -c 'rm -f tmp/pids/server.pid; rails s -b 0.0.0.0'
     depends_on:
