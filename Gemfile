@@ -56,6 +56,7 @@ group :development do
   gem 'better_errors', '~> 2.5'
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'bullet', '~> 5.9'
+  gem 'rack-mini-profiler', '~> 1.0', '>= 1.0.2', require: false
 end
 
 group :test do
