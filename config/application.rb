@@ -34,5 +34,8 @@ module App
       ]
     end
 
+    # health check
+    require_dependency Rails.root.join('middleware/health_check')
+    config.middleware.insert_before Rails::Rack::Logger, HealthCheck
   end
 end
