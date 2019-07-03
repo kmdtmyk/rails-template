@@ -37,7 +37,6 @@ module LinkToHelper
   def download_link_to(url, options = nil)
     option ||= {}
     default_option = {
-      target: '_blank',
       class: 'btn btn-info'
     }
     options = default_option.merge(option)

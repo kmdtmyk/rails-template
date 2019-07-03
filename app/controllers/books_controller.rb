@@ -1,13 +1,27 @@
 # frozen_string_literal: true
 
 class BooksController < BaseController
+  include StreamingDownload
+
   before_action :set_book, only: [:edit, :update, :destroy]
 
   def index
     @books = Book.search(params[:q])
     respond_to do |format|
       format.html { render layout: 'wide' }
-      format.csv { send_csv @books.to_csv, filename: 'books.csv' }
+      format.csv { download_csv(@books) }
+    end
+  end
+
+  def download_csv(books)
+    streaming_download('books.csv') do |stream|
+      books.ids.each_slice(1000) do |ids|
+        csv = []
+        Book.find(ids).each do |book|
+          csv << book.to_csv
+        end
+        stream.write csv.join("\n") + "\n"
+      end
     end
   end
 

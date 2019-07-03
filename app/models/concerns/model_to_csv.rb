@@ -25,6 +25,18 @@ module ModelToCsv
       end
     }
 
+    def to_csv
+      options = {
+        write_headers: false,
+        force_quotes: true,
+      }
+      CSV.generate(options) do |csv|
+        csv << attribute_names.map do |name|
+          read_attribute name
+        end
+      end.strip
+    end
+
   end
 
 end
