@@ -19,6 +19,7 @@ module App
     config.i18n.default_locale = :ja
     config.time_zone = 'Asia/Tokyo'
     config.active_record.default_timezone = :local
+    config.action_controller.include_all_helpers = false
     config.generators do |g|
       g.test_framework false
     end

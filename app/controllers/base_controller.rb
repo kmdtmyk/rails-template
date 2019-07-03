@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class BaseController < ApplicationController
+  helper FontAwesomeHelper
+  helper FormatHelper
+  helper LinkToHelper
+  helper PaginationHelper
+  helper Theme::BootstrapHelper
 
   private
 
