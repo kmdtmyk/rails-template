@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Theme::BootstrapHelper
+module Theme::Bootstrap4Helper
 
   def collection_select(*args)
     set_default_classes(args, 6, %w(form-control))

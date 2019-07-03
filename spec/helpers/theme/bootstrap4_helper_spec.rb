@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Theme::BootstrapHelper, type: :helper do
+RSpec.describe Theme::Bootstrap4Helper, type: :helper do
 
   describe 'date_field' do
     it do

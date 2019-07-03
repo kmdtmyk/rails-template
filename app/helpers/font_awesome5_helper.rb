@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module FontAwesomeHelper
+module FontAwesome5Helper
 
   def fa_icon(style, name, text = nil, html_options = {})
     text, html_options = nil, text if text.is_a?(Hash)
