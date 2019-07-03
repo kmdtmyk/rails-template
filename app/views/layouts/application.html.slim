@@ -30,7 +30,13 @@ html
   body
     .sticky-top
       = render 'shared/navbar'
-    .container.mt-3
+
+    - if content_for? :container_class
+      - container_class = yield :container_class
+    - else
+      - container_class = %w(container mt-3)
+
+    = tag.div(class: container_class)
       = render 'shared/flash_message'
       = render 'shared/breadcrumb'
       = yield

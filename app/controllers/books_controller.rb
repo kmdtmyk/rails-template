@@ -5,6 +5,7 @@ class BooksController < BaseController
 
   def index
     @books = Book.search(params[:q])
+    render layout: 'wide'
   end
 
   def new
