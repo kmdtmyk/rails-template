@@ -65,8 +65,10 @@ module Theme::BootstrapHelper
   def set_default_classes(args, index, classes)
     args[index] ||= {}
     options = args[index]
-    options[:class] = Array.wrap(options[:class])
-    options[:class].prepend(*classes).uniq!
+    unless options.has_key? :class
+      options[:class] = Array.wrap(options[:class])
+      options[:class].prepend(*classes).uniq!
+    end
   end
 
 end
