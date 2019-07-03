@@ -26,3 +26,9 @@
             td= book.release_date
             td.btn-cell= edit_link_to 'Edit', edit_book_path(book)
             td.btn-cell= delete_link_to 'Delete', book
+
+- if @books.any?
+  .d-flex.align-items-baseline
+    span.mr-2 #{format_number @books.count} Download
+    = download_link_to url_for(format: :csv, params: params.permit!) do
+      = "csv"

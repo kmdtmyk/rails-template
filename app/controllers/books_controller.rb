@@ -5,7 +5,10 @@ class BooksController < BaseController
 
   def index
     @books = Book.search(params[:q])
-    render layout: 'wide'
+    respond_to do |format|
+      format.html { render layout: 'wide' }
+      format.csv { send_csv @books.to_csv, filename: 'books.csv' }
+    end
   end
 
   def new

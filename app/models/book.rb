@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Book < ApplicationRecord
+  include ModelToCsv
 
   scope :search, -> (query) {
     if query.present?
