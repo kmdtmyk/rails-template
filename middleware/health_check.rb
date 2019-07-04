@@ -10,7 +10,7 @@ class HealthCheck
     if env['PATH_INFO'] == '/health_check'
       body = 'ok'
       status = 200
-      header = { 'Content-Type' => 'text/text' }
+      header = { 'Content-Type' => 'text/plain' }
       Rack::Response.new(body, status, header).finish
     else
       @app.call(env)
