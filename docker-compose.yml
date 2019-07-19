@@ -23,6 +23,7 @@ services:
     environment:
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_INITDB_ARGS: '--encoding=UTF-8 --locale=C'
       TZ: Asia/Tokyo
     ports:
       - '${PUBLISH_DATABASE_PORT}:5432'
