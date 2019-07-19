@@ -18,7 +18,8 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:9.6.8
+    build:
+      context: ./docker/db
     environment:
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
