@@ -9,10 +9,15 @@
 /vendor/bundle/*
 !/vendor/bundle/.keep
 
-# Ignore all logfiles and tempfiles.
+# Ignore all logfiles.
 /log/*
-/tmp/*
 !/log/.keep
+!/log/nginx/
+/log/nginx/*
+!/log/nginx/.keep
+
+# Ignore tempfiles.
+/tmp/*
 !/tmp/.keep
 
 # Ignore uploaded files in development
