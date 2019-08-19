@@ -10,6 +10,7 @@ RUN apk update && \
     postgresql-dev \
     # others
     nodejs \
+    yarn \
     tzdata \
     vim \
     bash \
