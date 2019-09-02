@@ -31,7 +31,7 @@ module App
       config.rack_dev_mark.theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(
         position: ENV['RACK_DEV_MARK_POSITION'],
         fixed: true,
-        color: 'red')
+        color: ENV['RACK_DEV_MARK_COLOR'])
       ]
     end
 
