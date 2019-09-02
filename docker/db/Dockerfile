@@ -1,4 +1,4 @@
-FROM postgres:9.6.8
+FROM postgres:9.6.15
 
 COPY postgresql.conf /etc/postgresql
 
