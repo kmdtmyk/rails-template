@@ -2,6 +2,7 @@
 
 class Book < ApplicationRecord
   include ModelToCsv
+  include SafeOrder
 
   scope :search, -> (query) {
     if query.present?
