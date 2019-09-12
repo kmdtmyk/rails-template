@@ -7,8 +7,8 @@ module UrlHelper
       %w(action controller).include? key
     end
 
-    if params[:sort]&.to_sym == name.to_sym
-      order = params[:order] == 'asc' ? 'desc' : 'asc'
+    if name.to_s.casecmp? params[:sort]&.to_s
+      order = 'asc'.casecmp?(params[:order]&.to_s) ? 'desc' : 'asc'
     else
       order = 'asc'
     end
