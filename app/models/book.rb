@@ -5,9 +5,16 @@ class Book < ApplicationRecord
   include SafeOrder
 
   scope :search, -> (query) {
+
+    result = self
+
     if query.present?
-      where('name LIKE ?', "%#{sanitize_sql_like(query)}%")
+      query.split(/[[:blank:]]/).each do |text|
+        result = result.where('name ILIKE ?', "%#{sanitize_sql_like(text)}%")
+      end
     end
+
+    result
   }
 
 end
