@@ -5,6 +5,7 @@ class BaseController < ApplicationController
   helper FormatHelper
   helper LinkToHelper
   helper PaginationHelper
+  helper UrlHelper
   helper Theme::Bootstrap4Helper
 
   private

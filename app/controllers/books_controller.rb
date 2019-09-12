@@ -6,7 +6,7 @@ class BooksController < BaseController
   before_action :set_book, only: [:edit, :update, :destroy]
 
   def index
-    @books = Book.search(params[:q])
+    @books = Book.search(params[:q]).order("#{params[:sort]} #{params[:order]}")
     respond_to do |format|
       format.html { render layout: 'wide' }
       format.csv { download_csv(@books) }

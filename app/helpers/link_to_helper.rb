@@ -45,4 +45,20 @@ module LinkToHelper
     end
   end
 
+  def sort_link_to(name, options = nil, &block)
+    options ||= {}
+
+    if params[:sort]&.to_sym == name.to_sym
+      if params[:order] == 'asc'
+        icon = fas('sort-up')
+      elsif params[:order] == 'desc'
+        icon = fas('sort-down')
+      end
+    end
+
+    link_to sort_url(name), options do
+      capture(&block) + icon
+    end
+  end
+
 end

@@ -14,9 +14,15 @@
     table.table.table-striped.table-hover
       thead
         tr
-          th.sticky-left Name
-          th Price
-          th Release date
+          th.sticky-left
+            = sort_link_to :name
+              span Name
+          th
+            = sort_link_to :price
+              span Price
+          th
+            = sort_link_to :release_date
+              span Release date
           th colspan=2
       tbody
         - books.each do |book|
