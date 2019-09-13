@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
   root 'root#index'
 
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+  }
+
   resources :books, except: [:show]
 
   resource :health_check, only: [:show]
