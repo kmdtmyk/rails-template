@@ -19,8 +19,14 @@ class Api::BaseController < ActionController::API
     end
 
     def current_user
-      unless auth_token.nil?
-        User.find(auth_token[:user_id])
+      if auth_token.nil?
+        return
+      end
+
+      user = User.find(auth_token[:user_id])
+
+      if auth_token[:jti] == user.jti
+        user
       end
     rescue
       nil

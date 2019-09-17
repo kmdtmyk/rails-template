@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_09_13_074029) do
     t.string "name"
     t.string "furigana"
     t.boolean "admin", default: false, null: false
+    t.string "jti"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

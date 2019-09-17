@@ -18,6 +18,12 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, allow_nil: true
   validates :username, uniqueness: true, allow_nil: true
 
+  before_save do
+    if jti.present? and encrypted_password_changed?
+      self.jti = SecureRandom.uuid
+    end
+  end
+
   def email_required?
     false
   end
