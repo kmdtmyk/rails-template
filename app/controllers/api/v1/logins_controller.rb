@@ -9,22 +9,7 @@ class Api::V1::LoginsController < Api::BaseController
       raise ApplicationError::Unauthorized
       return
     end
-    render json: { user: user, token: token(user) }
+    render json: { user: user, token: create_auth_token(user) }
   end
-
-  private
-
-    def token(user)
-      if user.jti.nil?
-        user.update(jti: SecureRandom.uuid)
-      end
-      payload = {
-        user_id: user.id,
-        iat: Time.current.to_i,
-        exp: 30.days.from_now.to_i,
-        jti: user.jti,
-      }
-      JWT.encode(payload, ENV['SECRET_KEY_BASE'])
-    end
 
 end
