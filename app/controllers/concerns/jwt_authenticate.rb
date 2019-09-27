@@ -23,6 +23,10 @@ module JwtAuthenticate
     nil
   end
 
+  def current_user_id
+    current_user&.id
+  end
+
   def auth_token
     if request.headers['Authorization'].start_with? 'Bearer '
       token = request.headers['Authorization'][7..-1]
