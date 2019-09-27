@@ -6,7 +6,8 @@ html
     meta name='format-detection' content='telephone=no'
     title
       = yield(:title) + ' | ' if content_for?(:title)
-      |Title
+      = t 'views.title'
+
     = csrf_meta_tags
     = csp_meta_tag
 
