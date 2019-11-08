@@ -29,7 +29,7 @@ class Api::BaseController < ActionController::API
         end
       else
         attributes = attributes.transform_keys do |key|
-          if attributes[key].is_a? Array
+          if attributes[key].is_a? Array and !key.to_s.end_with?('ids')
             "#{key}_attributes"
           else
             key
