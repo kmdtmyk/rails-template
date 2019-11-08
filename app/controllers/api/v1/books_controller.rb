@@ -13,8 +13,18 @@ class Api::V1::BooksController < Api::BaseController
   end
 
   def create
-    book = Book.create(book_params)
-    render json: book
+    body = request_body
+
+    if body.is_a? Array
+      books = body.map do |json|
+        Book.create(json)
+      end
+      render json: books
+    else
+      book = Book.create(body)
+      render json: book
+    end
+
   end
 
   private
