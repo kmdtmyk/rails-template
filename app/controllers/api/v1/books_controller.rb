@@ -12,4 +12,15 @@ class Api::V1::BooksController < Api::BaseController
     render json: book
   end
 
+  def create
+    book = Book.create(book_params)
+    render json: book
+  end
+
+  private
+
+    def book_params
+      params.permit(:name, :price, :release_date)
+    end
+
 end
