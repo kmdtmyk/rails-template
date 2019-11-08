@@ -27,6 +27,13 @@ class Api::V1::BooksController < Api::BaseController
 
   end
 
+  def update
+    body = transform_nested_attributes(request_body)
+    book = Book.find(body[:id])
+    book.update(book_params(body))
+    render json: book
+  end
+
   private
 
     def book_params(hash)

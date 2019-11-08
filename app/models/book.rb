@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class Book < ApplicationRecord
-  include ModelToCsv
+  include ExtendNestedAttributes
   include ExtendOrder
+  include ModelToCsv
 
   has_many :reviews, class_name: 'BookReview', dependent: :destroy
-  accepts_nested_attributes_for :reviews, allow_destroy: true
+  accepts_nested_attributes_for :reviews, allow_destroy: true, auto_destroy: true
 
   scope :search, -> (query) {
 
