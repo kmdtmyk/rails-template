@@ -16,4 +16,22 @@ RSpec.describe BooksController, type: :controller do
 
   end
 
+  describe '#create' do
+
+    example 'book' do
+      params = { book: { name: 'book1', price: 100, release_date: '2019-10-15' } }
+      post :create, params: params
+      expect(Book.count).to eq 1
+    end
+
+    example 'reviews' do
+      reviews = [{ content: 'review1' }, { content: 'review2' }, { content: 'review3' }]
+      params = { book: { reviews_attributes: reviews } }
+      post :create, params: params
+      expect(Book.count).to eq 1
+      expect(BookReview.count).to eq 3
+    end
+
+  end
+
 end

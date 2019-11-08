@@ -61,7 +61,16 @@ class BooksController < BaseController
     end
 
     def book_params
-      params.require(:book).permit(:name, :price, :release_date)
+      params.require(:book).permit(
+        :name,
+        :price,
+        :release_date,
+        reviews_attributes: [
+          :id,
+          :content,
+          :_destroy,
+        ]
+      )
     end
 
 end

@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   include ExtendOrder
 
   has_many :reviews, class_name: 'BookReview', dependent: :destroy
-  accepts_nested_attributes_for :reviews
+  accepts_nested_attributes_for :reviews, allow_destroy: true
 
   scope :search, -> (query) {
 
