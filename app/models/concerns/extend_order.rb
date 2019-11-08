@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module SafeOrder
+module ExtendOrder
   extend ActiveSupport::Concern
 
   included do

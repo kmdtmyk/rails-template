@@ -2,7 +2,7 @@
 
 class Book < ApplicationRecord
   include ModelToCsv
-  include SafeOrder
+  include ExtendOrder
 
   scope :search, -> (query) {
 
