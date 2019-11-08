@@ -16,12 +16,12 @@ class Api::V1::BooksController < Api::BaseController
     body = transform_nested_attributes(request_body)
 
     if body.is_a? Array
-      books = body.map do |json|
-        Book.create(json)
+      books = body.map do |hash|
+        Book.create(book_params(hash))
       end
       render json: books
     else
-      book = Book.create(body)
+      book = Book.create(book_params(body))
       render json: book
     end
 
@@ -29,8 +29,17 @@ class Api::V1::BooksController < Api::BaseController
 
   private
 
-    def book_params
-      params.permit(:name, :price, :release_date)
+    def book_params(hash)
+      ActionController::Parameters.new(hash).permit(
+        :name,
+        :price,
+        :release_date,
+        reviews_attributes: [
+          :id,
+          :content,
+          :_destroy,
+        ]
+      )
     end
 
 end
