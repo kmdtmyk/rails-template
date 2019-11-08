@@ -17,10 +17,10 @@ RSpec.describe Book, type: :model do
     end
 
     it 'ignore case' do
-      expect(Book.safe_order('NAME', 'ASC').to_sql).to include 'ORDER BY books.name ASC'
-      expect(Book.safe_order('NAME', 'DESC').to_sql).to include 'ORDER BY books.name DESC'
-      expect(Book.safe_order(:NAME, :ASC).to_sql).to include 'ORDER BY books.name ASC'
-      expect(Book.safe_order(:NAME, :DESC).to_sql).to include 'ORDER BY books.name DESC'
+      expect(Book.safe_order('NaMe', 'AsC').to_sql).to include 'ORDER BY books.name ASC'
+      expect(Book.safe_order('NaMe', 'DeSc').to_sql).to include 'ORDER BY books.name DESC'
+      expect(Book.safe_order(:nAmE, :aSc).to_sql).to include 'ORDER BY books.name ASC'
+      expect(Book.safe_order(:nAmE, :dEsC).to_sql).to include 'ORDER BY books.name DESC'
     end
 
     it 'one argument' do
