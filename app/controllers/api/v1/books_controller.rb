@@ -13,7 +13,7 @@ class Api::V1::BooksController < Api::BaseController
   end
 
   def create
-    body = request_body
+    body = transform_nested_attributes(request_body)
 
     if body.is_a? Array
       books = body.map do |json|

@@ -22,4 +22,22 @@ class Api::BaseController < ActionController::API
       end
     end
 
+    def transform_nested_attributes(attributes)
+      if attributes.is_a? Array
+        attributes = attributes.map do |attributes|
+          transform_nested_attributes(attributes)
+        end
+      else
+        attributes = attributes.transform_keys do |key|
+          if attributes[key].is_a? Array
+            "#{key}_attributes"
+          else
+            key
+          end
+        end
+      end
+
+      attributes
+    end
+
 end
