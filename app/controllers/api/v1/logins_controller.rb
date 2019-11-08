@@ -3,8 +3,9 @@
 class Api::V1::LoginsController < Api::BaseController
 
   def create
-    user = User.find_by(username: params[:username])
-    if user.nil? or !user.valid_password?(params[:password])
+    body = request_body
+    user = User.find_by(username: body[:username])
+    if user.nil? or !user.valid_password?(body[:password])
       raise ApplicationError::Unauthorized
       return
     end
