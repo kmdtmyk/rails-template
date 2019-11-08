@@ -14,11 +14,11 @@ class Api::BaseController < ActionController::API
   private
 
     def request_body
-      json = JSON.parse(request.body.read)
-      if json.is_a? Array
-        json.each { |json| json.deep_transform_keys!{ |key| key.underscore.to_sym } }
+      body = JSON.parse(request.body.read)
+      if body.is_a? Array
+        body.each { |hash| hash.deep_transform_keys!{ |key| key.underscore.to_sym } }
       else
-        json.deep_transform_keys!{ |key| key.underscore.to_sym }
+        body.deep_transform_keys!{ |key| key.underscore.to_sym }
       end
     end
 
