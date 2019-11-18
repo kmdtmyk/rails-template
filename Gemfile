@@ -35,6 +35,8 @@ gem 'gretel', '~> 3.0', '>= 3.0.9'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'jwt', '~> 2.2', '>= 2.2.1'
 
+gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '8cd0f91b90adc651d40cf28a28a5ca45e135dbfc'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

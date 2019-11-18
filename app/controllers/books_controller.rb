@@ -3,6 +3,7 @@
 class BooksController < BaseController
   include StreamingDownload
 
+  before_action :apply_rparam
   before_action :set_book, only: [:edit, :update, :destroy]
 
   def index

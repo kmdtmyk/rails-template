@@ -24,6 +24,8 @@ class User < ApplicationRecord
     end
   end
 
+  acts_as_rparam_user
+
   def email_required?
     false
   end

@@ -12,6 +12,7 @@ RUN apk update && \
     nodejs \
     yarn \
     tzdata \
+    git \
     vim \
     bash \
     sudo

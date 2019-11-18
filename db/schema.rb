@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2019_11_08_023519) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "rparam_memories", force: :cascade do |t|
+    t.string "user_type"
+    t.bigint "user_id"
+    t.string "action"
+    t.string "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_type", "user_id"], name: "index_rparam_memories_on_user_type_and_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "encrypted_password", default: "", null: false
