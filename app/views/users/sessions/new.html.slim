@@ -1,27 +1,31 @@
-h2 Log in
 
-= alert
+- content_for :header_tags
+  = stylesheet_link_tag 'login', media: 'all', 'data-turbolinks-track': 'reload'
 
-= notice
+.login-container
 
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .login-form
 
-  .field
-    = f.label :username
-    br
-    = f.text_field :username, autofocus: true
+    h2 Log in
 
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: 'current-password'
+    = render 'shared/flash_message'
 
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
 
-  .actions
-    = f.submit 'Log in'
+      .form-group
+        = f.label :username
+        = f.text_field :username, autofocus: true, class: 'form-control'
 
-= render 'users/shared/links'
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
+
+      - if devise_mapping.rememberable?
+        .form-group
+          = f.check_box :remember_me, class: 'mr-1'
+          = f.label :remember_me
+
+      .form-group
+        = f.submit 'Log in', class: 'btn btn-primary w-100'
+
+    = render 'users/shared/links'
