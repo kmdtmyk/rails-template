@@ -4,6 +4,23 @@ end
 
 
 
+crumb :users do
+  link 'User List', users_path
+  parent :root
+end
+
+crumb :user_new do
+  link 'New'
+  parent :users
+end
+
+crumb :user_edit do
+  link 'Edit'
+  parent :users
+end
+
+
+
 crumb :books do
   link 'Book List', books_path
   parent :root

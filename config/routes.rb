@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
 
   resources :books, except: [:show]
+  resources :users, except: [:show]
 
   namespace :api do
     namespace :v1 do
