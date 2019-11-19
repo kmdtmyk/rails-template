@@ -5,6 +5,8 @@ def user
   User.create(
     username: 'admin',
     password: 'admin',
+    name: '管理者',
+    furigana: 'かんりしゃ',
     admin: true,
   )
 
@@ -12,6 +14,8 @@ def user
     User.create(
       username: "user#{i}",
       password: "user#{i}",
+      name: "ユーザ#{i}",
+      furigana: "ゆーざ#{i}",
     )
   end
 
