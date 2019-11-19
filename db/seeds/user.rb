@@ -12,7 +12,6 @@ def user
     User.create(
       username: "user#{i}",
       password: "user#{i}",
-      admin: true,
     )
   end
 
