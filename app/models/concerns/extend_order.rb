@@ -14,9 +14,9 @@ module ExtendOrder
       sort = "#{model.table_name}.#{name}"
 
       if 'asc'.casecmp? order.to_s
-        order("#{sort} ASC")
+        order("#{sort} ASC NULLS LAST")
       elsif 'desc'.casecmp? order.to_s
-        order("#{sort} DESC")
+        order("#{sort} DESC NULLS LAST")
       end
     }
 
