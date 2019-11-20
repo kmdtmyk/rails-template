@@ -81,7 +81,12 @@ label{
   margin-bottom: 0;
 
   input[type='radio']{
-    margin-right: 0.5em;
+    margin-right: 0.2em;
+
+    & + span{
+      margin-right: 0.5em;
+    }
+
   }
 
 }
