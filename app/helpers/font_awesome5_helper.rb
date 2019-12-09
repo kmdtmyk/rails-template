@@ -14,12 +14,18 @@ module FontAwesome5Helper
     end
 
     content_class = "#{style} #{name}"
-    content_class << " #{html_options[:class]}" if html_options.key?(:class)
+    if html_options.key?(:class)
+      content_class = content_class + " #{html_options[:class]}"
+    end
     html_options[:class] = content_class
 
     html = content_tag(:i, nil, html_options)
     html << ' ' << text.to_s unless text.blank?
     html
+  end
+
+  def far(*args)
+    fa_icon('far', *args)
   end
 
   def fas(*args)
