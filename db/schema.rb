@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.string "name"
     t.integer "price"
     t.date "release_date"
+    t.bigint "create_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["create_user_id"], name: "index_books_on_create_user_id"
   end
 
   create_table "rparam_memories", force: :cascade do |t|

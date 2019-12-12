@@ -5,6 +5,7 @@ class CreateTables < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :price
       t.date :release_date
+      t.references :create_user
 
       t.timestamps
     end

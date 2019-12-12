@@ -36,6 +36,6 @@ def separator_line
 end
 
 seeds do
-  seed(:book){ book }
   seed(:user){ user }
+  seed(:book){ book }
 end
