@@ -22,4 +22,32 @@ module ExtendOrder
 
   end
 
+  module ClassMethods
+
+    def order_by(hash)
+
+      hash = HashWithIndifferentAccess.new(hash)
+
+      scope :order_by, -> (sort, order = 'asc'){
+        if 'asc'.casecmp? order.to_s
+          order = 'ASC'
+        elsif 'desc'.casecmp? order.to_s
+          order = 'DESC'
+        else
+          return self
+        end
+
+        sort_column = hash[sort]
+
+        if sort_column.present?
+          order("#{sort_column} #{order} NULLS LAST")
+        else
+          safe_order(sort, order)
+        end
+      }
+
+    end
+
+  end
+
 end
