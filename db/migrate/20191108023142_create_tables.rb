@@ -1,5 +1,14 @@
-class CreateBookReviews < ActiveRecord::Migration[6.0]
+class CreateTables < ActiveRecord::Migration[6.0]
   def change
+
+    create_table :books do |t|
+      t.string :name
+      t.integer :price
+      t.date :release_date
+
+      t.timestamps
+    end
+
     create_table :book_reviews do |t|
       t.references :book, foreign_key: true
       t.text :content
@@ -7,5 +16,6 @@ class CreateBookReviews < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
   end
 end
