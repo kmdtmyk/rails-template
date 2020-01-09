@@ -35,6 +35,7 @@ gem 'gretel', '~> 3.0', '>= 3.0.9'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'jwt', '~> 2.2', '>= 2.2.1'
 gem 'search_cop', '~> 1.1'
+gem 'gon', '~> 6.3', '>= 6.3.2'
 
 gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '8cd0f91b90adc651d40cf28a28a5ca45e135dbfc'
 

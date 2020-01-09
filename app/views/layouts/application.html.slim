@@ -10,6 +10,7 @@ html lang='ja'
 
     = csrf_meta_tags
     = csp_meta_tag
+    = Gon::Base.render_data(camel_case: true)
 
     = render 'shared/head_tags'
     = yield :header_tags
