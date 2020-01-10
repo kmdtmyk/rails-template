@@ -22,7 +22,7 @@ module App
     config.action_controller.include_all_helpers = false
     config.active_storage.routes_prefix = :files
     config.generators do |g|
-      g.test_framework false
+      g.test_framework nil
     end
 
     # rack dev mark
