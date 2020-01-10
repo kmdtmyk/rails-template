@@ -3,6 +3,8 @@
 class Api::BaseController < ActionController::API
   include JwtAuthenticate
 
+  #before_action :authenticate_user!
+
   rescue_from ActiveRecord::RecordNotFound do
     render json: { message: 'Not Found' }, status: 404
   end
