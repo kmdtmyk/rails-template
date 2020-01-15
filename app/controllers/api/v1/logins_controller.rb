@@ -9,7 +9,7 @@ class Api::V1::LoginsController < Api::BaseController
       raise ApplicationError::Unauthorized
       return
     end
-    render json: { user: user, token: create_auth_token(user) }
+    render json: { user: user, token: user.create_auth_token }
   end
 
 end

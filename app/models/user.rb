@@ -50,4 +50,17 @@ class User < ApplicationRecord
     false
   end
 
+  def create_auth_token
+    if jti.nil?
+      update(jti: SecureRandom.uuid)
+    end
+    payload = {
+      user_id: id,
+      iat: Time.current.to_i,
+      exp: 30.days.from_now.to_i,
+      jti: jti,
+    }
+    JWT.encode(payload, ENV['SECRET_KEY_BASE'])
+  end
+
 end
