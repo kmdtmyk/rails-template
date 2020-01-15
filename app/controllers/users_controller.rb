@@ -29,8 +29,9 @@ class UsersController < BaseController
 
   def update
     @user = find_user
+    update_current_user = @user == current_user
     if @user.update(user_params)
-      if @user == current_user
+      if update_current_user
         bypass_sign_in(@user)
       end
       redirect_to_params_referrer_or url_for(action: :index), notice: 'ユーザの更新に成功しました'
