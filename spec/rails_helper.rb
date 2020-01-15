@@ -64,4 +64,7 @@ RSpec.configure do |config|
   # devise
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
+
+  # FactoryBot
+  config.include FactoryBot::Syntax::Methods
 end
