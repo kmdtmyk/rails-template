@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :login, only: [:create]
+      resource :user, only: [], module: :user do
+        resource :password, only: [:update]
+      end
       resources :books, only: [:index, :show, :create, :update]
     end
   end
