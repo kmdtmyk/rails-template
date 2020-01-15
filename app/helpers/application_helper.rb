@@ -8,7 +8,7 @@ module ApplicationHelper
     else
       value = params[:referrer]
     end
-    hidden_field_tag 'referrer', value
+    hidden_field_tag 'referrer', value, id: nil
   end
 
 end
