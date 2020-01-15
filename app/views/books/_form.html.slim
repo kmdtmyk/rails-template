@@ -11,3 +11,18 @@
       = form.label :release_date
       = form.date_field :release_date
   = form.submit
+
+.mt-4
+  dl.attributes.attributes-small
+    div
+      dt 作成者
+      dd= book.create_user_name
+    div
+      dt 作成日時
+      dd= format_datetime book.created_at
+    div
+      dt 更新者
+      dd= book.update_user_name
+    div
+      dt 更新日時
+      dd= format_datetime book.updated_at

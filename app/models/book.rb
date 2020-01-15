@@ -10,9 +10,10 @@ class Book < ApplicationRecord
   accepts_nested_attributes_for :reviews, allow_destroy: true, auto_destroy: true
 
   belongs_to_user prefix: :create
+  belongs_to_user prefix: :update
 
   order_by(
-    create_user: 'users.name'
+    update_user: 'users.name'
   )
 
   scope :search, -> (query) {

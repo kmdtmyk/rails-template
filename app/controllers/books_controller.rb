@@ -38,6 +38,7 @@ class BooksController < BaseController
 
   def create
     @book = Book.new(book_params)
+    @book.created_by(current_user)
     if @book.save
       redirect_to_params_referrer_or url_for(action: :index), notice: 'Book was successfully created.'
     else
@@ -46,6 +47,7 @@ class BooksController < BaseController
   end
 
   def update
+    @book.updated_by(current_user)
     if @book.update(book_params)
       redirect_to_params_referrer_or url_for(action: :index), notice: 'Book was successfully updated.'
     else

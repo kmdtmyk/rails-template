@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.bigint "book_id"
     t.text "content"
     t.bigint "create_user_id"
+    t.bigint "update_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_book_reviews_on_book_id"
     t.index ["create_user_id"], name: "index_book_reviews_on_create_user_id"
+    t.index ["update_user_id"], name: "index_book_reviews_on_update_user_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -30,9 +32,11 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.integer "price"
     t.date "release_date"
     t.bigint "create_user_id"
+    t.bigint "update_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["create_user_id"], name: "index_books_on_create_user_id"
+    t.index ["update_user_id"], name: "index_books_on_update_user_id"
   end
 
   create_table "rparam_memories", force: :cascade do |t|

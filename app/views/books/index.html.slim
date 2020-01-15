@@ -9,7 +9,7 @@
   div
     = new_link_to 'New', new_book_path
 
-= render_with_pagination @books.includes(:create_user) do |books|
+= render_with_pagination @books.includes(:update_user) do |books|
   .table-sticky.max-vh-70
     table.table.table-striped.table-hover
       thead
@@ -24,8 +24,8 @@
             = sort_link_to :release_date
               span Release date
           th
-            = sort_link_to :create_user
-              span Create user
+            = sort_link_to :update_user
+              span Update user
           th
             = sort_link_to :updated_at
               span Updated at
@@ -36,7 +36,7 @@
             td.sticky-left= book.name
             td= book.price
             td= book.release_date
-            td= book.create_user_name
+            td= book.update_user_name
             td= format_datetime book.updated_at
             td.btn-cell= edit_link_to 'Edit', edit_book_path(book)
             td.btn-cell= delete_link_to 'Delete', book
