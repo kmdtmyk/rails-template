@@ -2,6 +2,8 @@
 
 class Api::V1::LoginsController < Api::BaseController
 
+  #skip_before_action :authenticate_user!
+
   def create
     body = request_body
     user = User.find_by(username: body[:username])
