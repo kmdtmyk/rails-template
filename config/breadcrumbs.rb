@@ -37,6 +37,23 @@ end
 
 
 
+crumb :settings_notices do
+  link 'Notice List', settings_notices_path
+  parent :root
+end
+
+crumb :settings_notice_new do
+  link 'New'
+  parent :settings_notices
+end
+
+crumb :settings_notice_edit do
+  link 'Edit'
+  parent :settings_notices
+end
+
+
+
 #   link "Projects", projects_path
 # end
 

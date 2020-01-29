@@ -39,6 +39,19 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.index ["update_user_id"], name: "index_books_on_update_user_id"
   end
 
+  create_table "notices", force: :cascade do |t|
+    t.string "title"
+    t.integer "body"
+    t.datetime "publish_start_datetime"
+    t.datetime "publish_end_datetime"
+    t.bigint "create_user_id"
+    t.bigint "update_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["create_user_id"], name: "index_notices_on_create_user_id"
+    t.index ["update_user_id"], name: "index_notices_on_update_user_id"
+  end
+
   create_table "rparam_memories", force: :cascade do |t|
     t.string "user_type"
     t.bigint "user_id"
