@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UsersParameter < Rparam::Parameter
+class Settings::UsersParameter < Rparam::Parameter
 
   def index
     param :sort, save: true

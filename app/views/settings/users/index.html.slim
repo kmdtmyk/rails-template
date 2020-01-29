@@ -1,6 +1,5 @@
 - content_for :title, 'ユーザ一覧'
-- breadcrumb :users
-
+- breadcrumb :settings_users
 
 .d-flex.justify-content-between.align-items-baseline
   form.flex-fill.form-group.search-form.mb-3
@@ -10,7 +9,7 @@
       = submit_tag '検索', class: 'btn btn-info'
 
   div
-    = new_link_to '新規', new_user_path
+    = new_link_to '新規', new_settings_user_path
 
 = render_with_pagination @users do |users|
   .table-sticky.max-vh-70
@@ -33,7 +32,7 @@
             td= user.username
             td= user.name
             td= user.furigana
-            td.btn-cell= edit_link_to '編集', edit_user_path(user)
+            td.btn-cell= edit_link_to '編集', edit_settings_user_path(user)
             td.btn-cell
               - unless user.admin?
-                = delete_link_to '削除', user
+                = delete_link_to '削除', settings_user_path(user)

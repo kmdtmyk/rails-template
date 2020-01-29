@@ -3,24 +3,6 @@ crumb :root do
 end
 
 
-
-crumb :users do
-  link 'User List', users_path
-  parent :root
-end
-
-crumb :user_new do
-  link 'New'
-  parent :users
-end
-
-crumb :user_edit do
-  link 'Edit'
-  parent :users
-end
-
-
-
 crumb :books do
   link 'Book List', books_path
   parent :root
@@ -35,6 +17,24 @@ crumb :book_edit do
   link 'Edit'
   parent :books
 end
+
+
+
+crumb :settings_users do
+  link 'User List', settings_users_path
+  parent :root
+end
+
+crumb :settings_user_new do
+  link 'New'
+  parent :settings_users
+end
+
+crumb :settings_user_edit do
+  link 'Edit'
+  parent :settings_users
+end
+
 
 
 #   link "Projects", projects_path

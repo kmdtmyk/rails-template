@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UsersController < BaseController
+class Settings::UsersController < BaseController
   before_action :apply_rparam
 
   def index
