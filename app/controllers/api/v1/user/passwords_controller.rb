@@ -2,6 +2,8 @@
 
 class Api::V1::User::PasswordsController < Api::BaseController
 
+  before_action :authenticate_user!
+
   def update
     user = User.find(current_user_id)
 
