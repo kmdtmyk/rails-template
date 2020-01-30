@@ -10,7 +10,7 @@ RSpec.feature 'Users', type: :feature do
 
     login_as user
 
-    visit edit_user_path(user)
+    visit edit_settings_user_path(user)
 
     fill_in 'user[password]', with: 'new_password'
     click_on 'commit_password'
