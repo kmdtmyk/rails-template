@@ -12,10 +12,12 @@ RSpec.describe Api::V1::LoginsController, type: :controller do
 
     example 'success' do
       body = { username: 'user1', password: 'pass1' }.to_json
+
       post :create, body: body, as: :json
+      result = JSON.parse(response.body, symbolize_names: true)
+
       expect(response.status).to eq 200
-      body = JSON.parse(response.body, symbolize_names: true)
-      expect(body[:token]).not_to eq nil
+      expect(result[:token]).not_to eq nil
     end
 
     example 'invalid username' do
