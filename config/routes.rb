@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     },
   }
 
+  resource :user, only: [:edit, :update]
   resources :books, except: [:show]
 
   namespace :settings do
