@@ -38,5 +38,6 @@ end
 seeds do
   seed(:user){ user }
   seed(:notice){ notice }
+  seed(:item){ item }
   seed(:book){ book }
 end
