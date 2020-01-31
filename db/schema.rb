@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.index ["update_user_id"], name: "index_books_on_update_user_id"
   end
 
-  create_table "notices", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "publish_start_datetime"
-    t.datetime "publish_end_datetime"
-    t.bigint "create_user_id"
-    t.bigint "update_user_id"
+  create_table "notices", comment: "お知らせ", force: :cascade do |t|
+    t.string "title", comment: "タイトル"
+    t.text "body", comment: "本文"
+    t.datetime "publish_start_datetime", comment: "公開開始日時"
+    t.datetime "publish_end_datetime", comment: "公開終了日時"
+    t.bigint "create_user_id", comment: "作成者id"
+    t.bigint "update_user_id", comment: "更新者id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["create_user_id"], name: "index_notices_on_create_user_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.index ["user_type", "user_id"], name: "index_rparam_memories_on_user_type_and_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", comment: "ユーザ", force: :cascade do |t|
     t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -73,10 +73,10 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "username"
-    t.string "name"
-    t.string "furigana"
-    t.boolean "admin", default: false, null: false
+    t.string "username", comment: "ユーザ名"
+    t.string "name", comment: "氏名"
+    t.string "furigana", comment: "ふりがな"
+    t.boolean "admin", default: false, null: false, comment: "管理者"
     t.string "jti"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

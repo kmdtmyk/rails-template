@@ -2,7 +2,7 @@
 
 class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
-    create_table :users do |t|
+    create_table :users, comment: 'ユーザ' do |t|
       ## Database authenticatable
       t.string :email
       t.string :encrypted_password, null: false, default: ""
@@ -32,10 +32,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.string :username
-      t.string :name
-      t.string :furigana
-      t.boolean :admin, null: false, default: false
+      t.string :username, comment: 'ユーザ名'
+      t.string :name, comment: '氏名'
+      t.string :furigana, comment: 'ふりがな'
+      t.boolean :admin, null: false, default: false, comment: '管理者'
       t.string :jti
 
       t.timestamps null: false
