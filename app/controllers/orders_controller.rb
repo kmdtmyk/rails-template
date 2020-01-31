@@ -13,17 +13,11 @@ class OrdersController < BaseController
     @order = Order.new(
       date: Time.zone.today,
     )
-    1.upto 5 do |i|
-      @order.details.new
-    end
     set_gon
   end
 
   def edit
     @order = Order.find(params[:id])
-    (@order.details.size + 1).upto 5 do |i|
-      @order.details.new
-    end
     set_gon
   end
 
@@ -80,6 +74,9 @@ class OrdersController < BaseController
     def set_gon
       gon.order = ActiveModelSerializers::SerializableResource.new(
         @order, serializer: OrderSerializer, include: [:details]
+      )
+      gon.items = ActiveModelSerializers::SerializableResource.new(
+        Item.all, each_serializer: ItemSerializer
       )
     end
 

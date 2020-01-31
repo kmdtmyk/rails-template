@@ -1,5 +1,8 @@
 import Vue from 'vue/dist/vue.esm'
+import VueFields from '@kmdtmyk/vue-fields'
 import OrderForm from './component/Form.vue'
+
+Vue.use(VueFields, {inputClass: 'form-control'})
 
 new Vue({
   el: '#app',
@@ -8,7 +11,8 @@ new Vue({
   },
   data(){
     return {
-      order: gon.order
+      order: gon.order,
+      items: gon.items,
     }
   },
 })
