@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 def book
+
+  return if Book.any?
+
   user_ids = User.ids
 
   books = []

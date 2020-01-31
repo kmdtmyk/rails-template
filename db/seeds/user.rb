@@ -2,6 +2,8 @@
 
 def user
 
+  return if User.any?
+
   User.create(
     username: 'admin',
     password: 'admin',
