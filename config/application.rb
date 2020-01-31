@@ -42,5 +42,9 @@ module App
       config.middleware.insert_before Rails::Rack::Logger, HealthCheck
     end
 
+    if defined? Faker
+      Faker::Config.locale = :en
+    end
+
   end
 end
