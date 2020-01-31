@@ -4,6 +4,8 @@ def notice
 
   return if Notice.any?
 
+  user_ids = User.ids
+
   notices = []
 
   100.times do
@@ -23,6 +25,8 @@ def notice
       body: Faker::Lorem.paragraph,
       publish_start_datetime: publish_start_datetime,
       publish_end_datetime: publish_end_datetime,
+      create_user_id: user_ids.sample,
+      update_user_id: user_ids.sample,
       created_at: Time.current,
       updated_at: Time.current,
     }
