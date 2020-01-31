@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :notices, only: [:index]
   resources :books, except: [:show]
 
+  get '/example', to: 'example#show'
+
   namespace :settings do
     resources :users, except: [:show]
     resources :notices, except: [:show]
