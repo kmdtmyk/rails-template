@@ -23,14 +23,18 @@
             = sort_link_to :body
               span 本文
           th
+            = sort_link_to :publish_start_datetime
+              span 公開開始日時
+          th
             = sort_link_to :updated_at
               span 更新日時
           th colspan=2
       tbody
         - notices.each do |notice|
           tr
-            td= notice.title
-            td= notice.body
+            td= notice.title&.truncate 30
+            td= notice.body&.truncate 30
+            td= format_datetime notice.publish_start_datetime
             td= format_datetime notice.updated_at
             td.btn-cell= edit_link_to '編集', edit_settings_notice_path(notice)
             td.btn-cell= delete_link_to '削除', settings_notice_path(notice)
