@@ -24,6 +24,26 @@ class CreateTables < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
+    create_table :orders do |t|
+      t.date :date
+      t.integer :total_price
+
+      t.references :create_user
+      t.references :update_user
+      t.timestamps
+    end
+
+    create_table :order_details do |t|
+      t.references :order, foreign_key: true
+      t.references :item
+      t.string :item_name
+      t.integer :item_price
+      t.integer :quantity
+      t.integer :total_price
+
+      t.timestamps
+    end
+
     create_table :books do |t|
       t.string :name
       t.integer :price

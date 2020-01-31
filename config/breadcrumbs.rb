@@ -3,6 +3,22 @@ crumb :root do
 end
 
 
+crumb :orders do
+  link '注文一覧', orders_path
+  parent :root
+end
+
+crumb :order_new do
+  link '新規'
+  parent :orders
+end
+
+crumb :order_edit do
+  link '編集'
+  parent :orders
+end
+
+
 crumb :books do
   link 'Book List', books_path
   parent :root

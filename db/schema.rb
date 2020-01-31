@@ -66,6 +66,30 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.index ["update_user_id"], name: "index_notices_on_update_user_id"
   end
 
+  create_table "order_details", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "item_id"
+    t.string "item_name"
+    t.integer "item_price"
+    t.integer "quantity"
+    t.integer "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_order_details_on_item_id"
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.date "date"
+    t.integer "total_price"
+    t.bigint "create_user_id"
+    t.bigint "update_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["create_user_id"], name: "index_orders_on_create_user_id"
+    t.index ["update_user_id"], name: "index_orders_on_update_user_id"
+  end
+
   create_table "rparam_memories", force: :cascade do |t|
     t.string "user_type"
     t.bigint "user_id"
@@ -100,4 +124,5 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
   end
 
   add_foreign_key "book_reviews", "books"
+  add_foreign_key "order_details", "orders"
 end
