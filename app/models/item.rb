@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   include ExtendOrder
   include BelongsToUser
   include SearchCop
+  include SetSearchText
 
   belongs_to_user prefix: :create
   belongs_to_user prefix: :update
@@ -13,17 +14,24 @@ class Item < ApplicationRecord
   )
 
   search_scope :search_scope do
-    attributes :name, :furigana
+    attributes :search_name, :search_furigana
   end
 
   scope :search, -> (params) {
     result = self
 
     if params[:q].present?
-      result = search_scope(params[:q])
+      result = search_scope(SearchText.normalize(params[:q]))
     end
 
     result
   }
+
+  before_save do
+    set_search_text(
+      name: :search_name,
+      furigana: :search_furigana,
+    )
+  end
 
 end

@@ -41,7 +41,9 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
+    t.string "search_name"
     t.string "furigana"
+    t.string "search_furigana"
     t.integer "price"
     t.bigint "create_user_id"
     t.bigint "update_user_id"

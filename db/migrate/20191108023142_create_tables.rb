@@ -14,7 +14,9 @@ class CreateTables < ActiveRecord::Migration[6.0]
 
     create_table :items do |t|
       t.string :name
+      t.string :search_name
       t.string :furigana
+      t.string :search_furigana
       t.integer :price
 
       t.references :create_user
