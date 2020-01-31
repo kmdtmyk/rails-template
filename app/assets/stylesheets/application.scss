@@ -40,3 +40,7 @@ body{
   .max-vw-#{$i * 5} { max-width: #{$i * 5}vw !important; }
   .max-vh-#{$i * 5} { max-height: #{$i * 5}vh !important; }
 }
+
+[v-cloak]{
+  display: none;
+}
