@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
 
   create_table "notices", force: :cascade do |t|
     t.string "title"
-    t.integer "body"
+    t.text "body"
     t.datetime "publish_start_datetime"
     t.datetime "publish_end_datetime"
     t.bigint "create_user_id"

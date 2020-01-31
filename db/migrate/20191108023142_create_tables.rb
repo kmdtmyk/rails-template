@@ -3,7 +3,7 @@ class CreateTables < ActiveRecord::Migration[6.0]
 
     create_table :notices do |t|
       t.string :title
-      t.integer :body
+      t.text :body
       t.datetime :publish_start_datetime
       t.datetime :publish_end_datetime
 
