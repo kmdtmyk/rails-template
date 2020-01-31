@@ -275,9 +275,6 @@ GEM
     tilt (2.0.9)
     treetop (1.6.10)
       polyglot (~> 0.3)
-    turbolinks (5.2.0)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
     uniform_notifier (1.12.1)
@@ -337,7 +334,6 @@ DEPENDENCIES
   slim (~> 4.0, >= 4.0.1)
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
