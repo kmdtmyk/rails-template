@@ -11,13 +11,13 @@ def item
   500.times do
 
     name = [
-      -> { Faker::Food.dish },
-      -> { Faker::Food.fruits },
-      -> { Faker::Food.vegetables },
-      -> { Faker::Beer.name },
-      -> { Faker::Book.title },
-      -> { Faker::Game.title },
-      -> { Faker::Music.album },
+      Faker::Food.method(:dish),
+      Faker::Food.method(:fruits),
+      Faker::Food.method(:vegetables),
+      Faker::Beer.method(:name),
+      Faker::Book.method(:title),
+      Faker::Game.method(:title),
+      Faker::Music.method(:album),
     ].sample.call
 
     items << {
