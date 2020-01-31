@@ -8,6 +8,7 @@ class NoticesController < BaseController
       .search(params)
       .order(publish_start_datetime: :desc)
       .page(params[:page])
+      .per(Notice::PER_PAGE)
   end
 
 end

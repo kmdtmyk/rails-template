@@ -6,7 +6,8 @@ class RootController < BaseController
     @notices = Notice
     .published
     .order(publish_start_datetime: :desc)
-    .page(params[:page])
+    .page
+    .per(Notice::PER_PAGE)
   end
 
 end

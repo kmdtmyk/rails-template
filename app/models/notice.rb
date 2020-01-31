@@ -29,6 +29,6 @@ class Notice < ApplicationRecord
       .where('? < publish_end_datetime OR publish_end_datetime IS NULL', now)
   }
 
-  paginates_per 10
+  PER_PAGE = 10
 
 end
