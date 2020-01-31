@@ -16,6 +16,7 @@ class OrdersController < BaseController
     1.upto 5 do |i|
       @order.details.new
     end
+    set_gon
   end
 
   def edit
@@ -23,6 +24,7 @@ class OrdersController < BaseController
     (@order.details.size + 1).upto 5 do |i|
       @order.details.new
     end
+    set_gon
   end
 
   def create
@@ -73,6 +75,12 @@ class OrdersController < BaseController
       end
 
       result
+    end
+
+    def set_gon
+      gon.order = ActiveModelSerializers::SerializableResource.new(
+        @order, serializer: OrderSerializer, include: [:details]
+      )
     end
 
 end

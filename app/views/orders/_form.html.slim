@@ -39,3 +39,7 @@
         dt 更新日時
         dd= format_datetime order.updated_at
 
+#app
+  order-form(v-model='order')
+
+= javascript_pack_tag 'orders/form'

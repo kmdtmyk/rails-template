@@ -8,7 +8,12 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^4.0.7",
     "dateformat": "^3.0.3",
-    "turbolinks": "^5.2.0"
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "turbolinks": "^5.2.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.8.3",
+    "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.8.0"
