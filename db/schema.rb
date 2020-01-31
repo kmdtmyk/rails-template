@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.index ["update_user_id"], name: "index_books_on_update_user_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "furigana"
+    t.integer "price"
+    t.bigint "create_user_id"
+    t.bigint "update_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["create_user_id"], name: "index_items_on_create_user_id"
+    t.index ["update_user_id"], name: "index_items_on_update_user_id"
+  end
+
   create_table "notices", comment: "お知らせ", force: :cascade do |t|
     t.string "title", comment: "タイトル"
     t.text "body", comment: "本文"

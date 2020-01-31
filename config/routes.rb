@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   namespace :settings do
     resources :users, except: [:show]
     resources :notices, except: [:show]
+    resources :items, except: [:show]
   end
 
   namespace :api do

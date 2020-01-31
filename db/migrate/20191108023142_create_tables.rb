@@ -12,6 +12,16 @@ class CreateTables < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
+    create_table :items do |t|
+      t.string :name
+      t.string :furigana
+      t.integer :price
+
+      t.references :create_user
+      t.references :update_user
+      t.timestamps
+    end
+
     create_table :books do |t|
       t.string :name
       t.integer :price

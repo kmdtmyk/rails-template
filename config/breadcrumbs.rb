@@ -61,6 +61,22 @@ end
 
 
 
+crumb :settings_items do
+  link '商品一覧', settings_items_path
+  parent :root
+end
+
+crumb :settings_item_new do
+  link '新規'
+  parent :settings_items
+end
+
+crumb :settings_item_edit do
+  link '編集'
+  parent :settings_items
+end
+
+
 #   link "Projects", projects_path
 # end
 
