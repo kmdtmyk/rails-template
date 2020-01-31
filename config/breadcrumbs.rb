@@ -20,6 +20,13 @@ end
 
 
 
+crumb :notices do
+  link 'お知らせ一覧', notices_path
+  parent :root
+end
+
+
+
 crumb :settings_users do
   link 'User List', settings_users_path
   parent :root

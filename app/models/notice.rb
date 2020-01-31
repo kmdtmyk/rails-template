@@ -22,4 +22,11 @@ class Notice < ApplicationRecord
     result
   }
 
+  scope :published, -> {
+    now = Time.current
+    self
+      .where('publish_start_datetime < ?', now)
+      .where('? < publish_end_datetime OR publish_end_datetime IS NULL', now)
+  }
+
 end

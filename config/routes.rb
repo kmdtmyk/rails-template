@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   }
 
   resource :user, only: [:edit, :update]
+  resources :notices, only: [:index]
   resources :books, except: [:show]
 
   namespace :settings do
