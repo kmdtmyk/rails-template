@@ -6,6 +6,12 @@ RSpec.describe User, type: :model do
 
   describe 'change password' do
 
+    example 'update password change datetime' do
+      user = create(:user)
+      user.update(password_change_datetime: Time.current - 10)
+      expect{ user.update(password: 'new_password') }.to change{ user.password_change_datetime }
+    end
+
     example 'jti is null' do
       user = create(:user)
       expect(user.jti).to eq nil

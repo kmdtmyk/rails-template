@@ -23,8 +23,11 @@ class User < ApplicationRecord
   acts_as_rparam_user
 
   before_save do
-    if jti.present? and encrypted_password_changed?
-      self.jti = SecureRandom.uuid
+    if encrypted_password_changed?
+      self.password_change_datetime = Time.current
+      if jti.present?
+        self.jti = SecureRandom.uuid
+      end
     end
   end
 
