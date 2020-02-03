@@ -25,12 +25,12 @@ crumb :books do
 end
 
 crumb :book_new do
-  link 'New'
+  link '新規'
   parent :books
 end
 
 crumb :book_edit do
-  link 'Edit'
+  link '編集'
   parent :books
 end
 
@@ -44,34 +44,34 @@ end
 
 
 crumb :settings_users do
-  link 'User List', settings_users_path
+  link 'ユーザ一覧', settings_users_path
   parent :root
 end
 
 crumb :settings_user_new do
-  link 'New'
+  link '新規'
   parent :settings_users
 end
 
 crumb :settings_user_edit do
-  link 'Edit'
+  link '編集'
   parent :settings_users
 end
 
 
 
 crumb :settings_notices do
-  link 'Notice List', settings_notices_path
+  link 'お知らせ一覧', settings_notices_path
   parent :root
 end
 
 crumb :settings_notice_new do
-  link 'New'
+  link '新規'
   parent :settings_notices
 end
 
 crumb :settings_notice_edit do
-  link 'Edit'
+  link '編集'
   parent :settings_notices
 end
 
