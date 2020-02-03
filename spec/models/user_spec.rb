@@ -4,6 +4,23 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  describe 'change password' do
+
+    example 'jti is null' do
+      user = create(:user)
+      expect(user.jti).to eq nil
+      expect{ user.update(password: 'new_password') }.not_to change{ user.jti }
+    end
+
+    example 'jti is not null' do
+      user = create(:user)
+      user.update(jti: 'foo')
+      expect(user.jti).not_to eq nil
+      expect{ user.update(password: 'new_password') }.to change{ user.jti }
+    end
+
+  end
+
   describe 'safe_order' do
 
     it 'string' do
