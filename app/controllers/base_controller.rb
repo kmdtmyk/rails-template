@@ -12,9 +12,6 @@ class BaseController < ApplicationController
 
     def send_csv(csv, options = nil)
       options ||= {}
-      if options[:filename].present?
-        options[:filename] = ERB::Util.url_encode(options[:filename])
-      end
       send_data csv, type: 'text/csv; charset=utf-8', **options
     end
 
