@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :username, comment: 'ユーザ名'
       t.string :name, comment: '氏名'
       t.string :furigana, comment: 'ふりがな'
+      t.datetime :password_change_datetime, comment: 'パスワード変更日時'
       t.boolean :admin, null: false, default: false, comment: '管理者'
       t.string :jti
 

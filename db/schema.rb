@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.string "username", comment: "ユーザ名"
     t.string "name", comment: "氏名"
     t.string "furigana", comment: "ふりがな"
+    t.datetime "password_change_datetime", comment: "パスワード変更日時"
     t.boolean "admin", default: false, null: false, comment: "管理者"
     t.string "jti"
     t.datetime "created_at", precision: 6, null: false

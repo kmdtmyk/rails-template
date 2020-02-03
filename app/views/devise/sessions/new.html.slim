@@ -6,8 +6,6 @@
 
   .login-form
 
-    h2 Log in
-
     = render 'shared/flash_message'
 
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -28,6 +26,6 @@
               = f.label :remember_me
 
       .form-group
-        = f.submit 'Log in', class: 'btn btn-primary w-100'
+        = f.submit 'ログイン', class: 'btn btn-primary w-100'
 
     = render 'devise/shared/links'
