@@ -19,6 +19,18 @@ class OrderSerializer < ActiveModel::Serializer
       :quantity,
       :total_price,
     )
+
+    has_one :item
+
+    class ItemSerializer < ActiveModel::Serializer
+      attributes(
+        :id,
+        :name,
+        :furigana,
+        :price,
+      )
+    end
+
   end
 
 end

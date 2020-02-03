@@ -15,12 +15,11 @@ div
     tbody
       tr(v-for='(detail, index) in order.details' :style='{display: detail._destroy ? "none": ""}')
         td
-          select.form-control(
+          ItemSelect(
+            size='50'
             v-model='detail.itemId'
-            :name='`order[details_attributes][${index}][item_id]`')
-            option
-            option(v-for='item in items' :value='item.id')
-              |{{item.name}} / ({{item.price | number}})
+            :name='`order[details_attributes][${index}][item_id]`'
+          )
         td
           IntegerField(
             v-model='detail.quantity'
@@ -37,10 +36,16 @@ div
             :name='`order[details_attributes][${index}][_destroy]`'
             :value='detail._destroy'
           )
+  //- pre {{order}}
 </template>
 
 <script>
+import ItemSelect from '~/component/ItemSelect'
+
 export default {
+  components: {
+    ItemSelect,
+  },
   model: {
     prop: 'order',
   },
@@ -57,7 +62,9 @@ export default {
     },
   },
   mounted(){
-    console.log(this)
+    this.order.details.forEach(detail => {
+      detail.itemId = detail.item
+    })
   },
   methods: {
     add(){

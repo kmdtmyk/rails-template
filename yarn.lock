@@ -697,10 +697,10 @@
   resolved "https://registry.yarnpkg.com/@kmdtmyk/midnight/-/midnight-0.3.3.tgz#2c667eb4ca2f2fc382650413aaf5a85a587955aa"
   integrity sha512-iUfeYshmxcUZzHvOWsl2JIKlAACrMW6bCpQqOXEaqJCljwSdF+mgwpLk8i1bwcBpLaMi3bf9Blzm/qW4ca8Zjg==
 
-"@kmdtmyk/vue-fields@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@kmdtmyk/vue-fields/-/vue-fields-0.1.5.tgz#ea7c4e93839e04fad6efc7e7de28c9505907e5fa"
-  integrity sha512-E/OuwrekYNvEWzQY6IQcKJlDW27D4UFNmB8q/p4bDfyRoxNmY8RIQqM4RCBQwrjqE5IEdtADiZktl1GXbHqFWw==
+"@kmdtmyk/vue-fields@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@kmdtmyk/vue-fields/-/vue-fields-0.1.6.tgz#82c2189041864c24b4f823b650ebee03aa8e0bca"
+  integrity sha512-PkyB0nTOyFHD0TtU5LojDBfMurw8A7Rf6q97FCN97mYHmW9CJzZzknzmt/jF8K4j5trjy9KfrtiG7VmtR+sMDQ==
 
 "@rails/actioncable@^6.0.0":
   version "6.0.1"
@@ -1267,6 +1267,13 @@ aws4@^1.8.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.9.0.tgz#24390e6ad61386b0a747265754d2a17219de862c"
   integrity sha512-Uvq6hVe90D0B2WEnUqtdgY1bATGz3mw33nH9Y+dmA+w5DHvUmBgkr5rM/KCHpCsiFNRUfokW/szpPPgMK2hm4A==
+
+axios@^0.19.2:
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
+  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+  dependencies:
+    follow-redirects "1.5.10"
 
 babel-loader@^8.0.6:
   version "8.0.6"
@@ -2356,6 +2363,13 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   dependencies:
     ms "2.0.0"
 
+debug@=3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
+  dependencies:
+    ms "2.0.0"
+
 debug@^3.0.0, debug@^3.1.1, debug@^3.2.5, debug@^3.2.6:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
@@ -2998,6 +3012,13 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
+
+follow-redirects@1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
+  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
+  dependencies:
+    debug "=3.1.0"
 
 follow-redirects@^1.0.0:
   version "1.9.0"

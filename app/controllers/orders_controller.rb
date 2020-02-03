@@ -72,11 +72,9 @@ class OrdersController < BaseController
     end
 
     def set_gon
+      order = Order.includes(details: :item).find(@order.id)
       gon.order = ActiveModelSerializers::SerializableResource.new(
-        @order, serializer: OrderSerializer, include: [:details]
-      )
-      gon.items = ActiveModelSerializers::SerializableResource.new(
-        Item.all, each_serializer: ItemSerializer
+        order, serializer: OrderSerializer, include: [{details: :item}]
       )
     end
 

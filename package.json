@@ -3,11 +3,12 @@
   "private": true,
   "dependencies": {
     "@kmdtmyk/midnight": "^0.3.3",
-    "@kmdtmyk/vue-fields": "^0.1.5",
+    "@kmdtmyk/vue-fields": "^0.1.6",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^4.0.7",
+    "axios": "^0.19.2",
     "dateformat": "^3.0.3",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
