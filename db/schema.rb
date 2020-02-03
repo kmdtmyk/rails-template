@@ -15,44 +15,6 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "book_reviews", force: :cascade do |t|
-    t.bigint "book_id"
-    t.text "content"
-    t.bigint "create_user_id"
-    t.bigint "update_user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_book_reviews_on_book_id"
-    t.index ["create_user_id"], name: "index_book_reviews_on_create_user_id"
-    t.index ["update_user_id"], name: "index_book_reviews_on_update_user_id"
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.date "release_date"
-    t.bigint "create_user_id"
-    t.bigint "update_user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["create_user_id"], name: "index_books_on_create_user_id"
-    t.index ["update_user_id"], name: "index_books_on_update_user_id"
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.string "search_name"
-    t.string "furigana"
-    t.string "search_furigana"
-    t.integer "price"
-    t.bigint "create_user_id"
-    t.bigint "update_user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["create_user_id"], name: "index_items_on_create_user_id"
-    t.index ["update_user_id"], name: "index_items_on_update_user_id"
-  end
-
   create_table "notices", comment: "お知らせ", force: :cascade do |t|
     t.string "title", comment: "タイトル"
     t.text "body", comment: "本文"
@@ -64,30 +26,6 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["create_user_id"], name: "index_notices_on_create_user_id"
     t.index ["update_user_id"], name: "index_notices_on_update_user_id"
-  end
-
-  create_table "order_details", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "item_id"
-    t.string "item_name"
-    t.integer "item_price"
-    t.integer "quantity"
-    t.integer "total_price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_order_details_on_item_id"
-    t.index ["order_id"], name: "index_order_details_on_order_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.date "date"
-    t.integer "total_price"
-    t.bigint "create_user_id"
-    t.bigint "update_user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["create_user_id"], name: "index_orders_on_create_user_id"
-    t.index ["update_user_id"], name: "index_orders_on_update_user_id"
   end
 
   create_table "rparam_memories", force: :cascade do |t|
@@ -123,6 +61,4 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "book_reviews", "books"
-  add_foreign_key "order_details", "orders"
 end

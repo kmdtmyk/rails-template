@@ -19,19 +19,10 @@ Rails.application.routes.draw do
 
   resource :user, only: [:edit, :update]
   resources :notices, only: [:index]
-  resources :orders, except: [:show]
-  resources :books, except: [:show]
-
-  get '/example', to: 'example#show'
 
   namespace :settings do
     resources :users, except: [:show]
     resources :notices, except: [:show]
-    resources :items, except: [:show]
-  end
-
-  namespace :autocomplete do
-    resources :items, only: [:index]
   end
 
   namespace :api do
@@ -40,7 +31,6 @@ Rails.application.routes.draw do
       resource :user, only: [], module: :user do
         resource :password, only: [:update]
       end
-      resources :books, only: [:index, :show, :create, :update]
     end
   end
 
