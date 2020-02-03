@@ -3,38 +3,6 @@ crumb :root do
 end
 
 
-crumb :orders do
-  link '注文一覧', orders_path
-  parent :root
-end
-
-crumb :order_new do
-  link '新規'
-  parent :orders
-end
-
-crumb :order_edit do
-  link '編集'
-  parent :orders
-end
-
-
-crumb :books do
-  link 'Book List', books_path
-  parent :root
-end
-
-crumb :book_new do
-  link 'New'
-  parent :books
-end
-
-crumb :book_edit do
-  link 'Edit'
-  parent :books
-end
-
-
 
 crumb :notices do
   link 'お知らせ一覧', notices_path
@@ -73,23 +41,6 @@ end
 crumb :settings_notice_edit do
   link 'Edit'
   parent :settings_notices
-end
-
-
-
-crumb :settings_items do
-  link '商品一覧', settings_items_path
-  parent :root
-end
-
-crumb :settings_item_new do
-  link '新規'
-  parent :settings_items
-end
-
-crumb :settings_item_edit do
-  link '編集'
-  parent :settings_items
 end
 
 
