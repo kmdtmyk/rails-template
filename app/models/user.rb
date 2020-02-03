@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   include SearchCop
   include ExtendOrder
+  include SetSearchText
 
   devise(
     :database_authenticatable,
@@ -23,23 +24,30 @@ class User < ApplicationRecord
   acts_as_rparam_user
 
   before_save do
+
+    set_search_text(
+      name: :search_name,
+      furigana: :search_furigana,
+    )
+
     if encrypted_password_changed?
       self.password_change_datetime = Time.current
       if jti.present?
         self.jti = SecureRandom.uuid
       end
     end
+
   end
 
   search_scope :search_scope do
-    attributes :username, :name, :furigana
+    attributes :username, :search_name, :search_furigana
   end
 
   scope :search, -> (params) {
     result = self
 
     if params[:q].present?
-      result = search_scope(params[:q])
+      result = search_scope(SearchText.normalize(params[:q]))
     end
 
     result
