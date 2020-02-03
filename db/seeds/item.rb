@@ -22,6 +22,7 @@ def item
 
     items << {
       name: name,
+      search_name: SearchText.normalize(name),
       price: rand(1000) * 10,
       create_user_id: user_ids.sample,
       update_user_id: user_ids.sample,
