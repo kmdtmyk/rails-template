@@ -9,7 +9,9 @@ div
     thead
       tr
         th item
+        th price
         th quantity
+        th total price
         th
           button.btn.btn-info(type='button' @click='add') 追加
     tbody
@@ -19,11 +21,20 @@ div
             size='50'
             v-model='detail.itemId'
             :name='`order[details_attributes][${index}][item_id]`'
+            :item.sync='detail.item'
+            @input='onInputItem(detail)'
+          )
+        td
+          IntegerField(
+            v-model='detail.itemPrice'
+            :name='`order[details_attributes][${index}][item_price]`'
           )
         td
           IntegerField(
             v-model='detail.quantity'
-            :name='`order[details_attributes][${index}][quantity]`')
+            :name='`order[details_attributes][${index}][quantity]`'
+          )
+        td.align-middle {{(detail.itemPrice || 0) * (detail.quantity || 0) | number}}
         td
           button.btn.btn-warning(type='button' @click='remove(detail)') 削除
           input(
@@ -61,11 +72,6 @@ export default {
       return value.toLocaleString()
     },
   },
-  mounted(){
-    this.order.details.forEach(detail => {
-      detail.itemId = detail.item
-    })
-  },
   methods: {
     add(){
       this.order.details.push({})
@@ -73,6 +79,14 @@ export default {
     remove(detail){
       this.$set(detail, '_destroy', 1)
     },
+    onInputItem(detail){
+      const {item} = detail
+      if(item == null){
+        detail.itemPrice = null
+      }else{
+        detail.itemPrice = detail.item.price
+      }
+    }
   },
 }
 </script>

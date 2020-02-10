@@ -2,13 +2,14 @@
 SelectField(
   record-key='id'
   v-bind='$attrs'
+  v-on='listeners'
   :value='value'
   :records='records'
+  :record.sync='record'
   :async-wait='200'
-  @input='onInput'
 )
   template(v-slot='{record}')
-    span {{record.name}} / ({{record.price | number}})
+    span {{record.name}}
 </template>
 
 <script>
@@ -20,6 +21,7 @@ export default {
   },
   props: [
     'value',
+    'item',
   ],
   filters: {
     number(value){
@@ -39,6 +41,22 @@ export default {
         return result.data
       }
     }
+  },
+  computed: {
+    listeners(){
+      return {
+        ...this.$listeners,
+        input: this.onInput,
+      }
+    },
+    record: {
+      get(){
+        return this.item
+      },
+      set(item){
+        this.$emit('update:item', item)
+      },
+    },
   },
   methods: {
     onInput(id){

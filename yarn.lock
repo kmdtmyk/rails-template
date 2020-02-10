@@ -697,10 +697,10 @@
   resolved "https://registry.yarnpkg.com/@kmdtmyk/midnight/-/midnight-0.3.3.tgz#2c667eb4ca2f2fc382650413aaf5a85a587955aa"
   integrity sha512-iUfeYshmxcUZzHvOWsl2JIKlAACrMW6bCpQqOXEaqJCljwSdF+mgwpLk8i1bwcBpLaMi3bf9Blzm/qW4ca8Zjg==
 
-"@kmdtmyk/vue-fields@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@kmdtmyk/vue-fields/-/vue-fields-0.1.6.tgz#82c2189041864c24b4f823b650ebee03aa8e0bca"
-  integrity sha512-PkyB0nTOyFHD0TtU5LojDBfMurw8A7Rf6q97FCN97mYHmW9CJzZzknzmt/jF8K4j5trjy9KfrtiG7VmtR+sMDQ==
+"@kmdtmyk/vue-fields@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@kmdtmyk/vue-fields/-/vue-fields-0.1.8.tgz#bd0a6ea5b27ad7000b720ffdc0ddd9e4e049fe53"
+  integrity sha512-uZ+sXhv1se40siveTN2oPECwKCDNJy+31pO+pruHyyDzliZoq8uBsO7tuWJtlcBl4zVYcT0dObyw1cPmOkjolA==
 
 "@rails/actioncable@^6.0.0":
   version "6.0.1"
