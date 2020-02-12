@@ -11,9 +11,9 @@ class Order < ApplicationRecord
   belongs_to_user prefix: :create
   belongs_to_user prefix: :update
 
-  order_by({
+  order_names(
     update_user: 'users.name'
-  })
+  )
 
   scope :search, -> (params) {
 
