@@ -51,7 +51,7 @@ div
 </template>
 
 <script>
-import ItemSelect from '~/component/ItemSelect'
+import ItemSelect from '~/components/ItemSelect'
 
 export default {
   components: {

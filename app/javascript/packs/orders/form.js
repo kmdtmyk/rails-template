@@ -1,6 +1,6 @@
 import Vue from 'vue/dist/vue.esm'
 import VueFields from '@kmdtmyk/vue-fields'
-import OrderForm from './component/Form.vue'
+import OrderForm from '~/components/form/Order'
 
 Vue.use(VueFields, {inputClass: 'form-control'})
 

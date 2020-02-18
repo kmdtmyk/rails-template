@@ -13,7 +13,7 @@ const path = require('path')
 environment.config.merge({
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, '../../app/javascript/packs'),
+      '~': path.resolve(__dirname, '../../app/javascript'),
     },
   },
 })
