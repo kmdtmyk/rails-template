@@ -5,6 +5,7 @@ class Book < ApplicationRecord
   include ExtendOrder
   include BelongsToUser
   include ModelToCsv
+  include WebApiModel
 
   has_many :reviews, class_name: 'BookReview', dependent: :destroy
   accepts_nested_attributes_for :reviews, allow_destroy: true, auto_destroy: true

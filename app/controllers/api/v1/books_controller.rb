@@ -3,8 +3,7 @@
 class Api::V1::BooksController < Api::BaseController
 
   def index
-    books = Book.all
-    render json: books
+    render json: Book.web_api_index(params)
   end
 
   def show
