@@ -95,6 +95,18 @@ module WebApiModel
       end
     end
 
+    def parse_include(text)
+      if text.blank?
+        return []
+      end
+
+      text.split(',').map do |value|
+        value.split('.').reverse.reduce({}) do |hash, name|
+          { name.to_sym => hash }
+        end
+      end
+    end
+
   end
 
 end

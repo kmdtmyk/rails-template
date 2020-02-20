@@ -87,4 +87,51 @@ RSpec.describe WebApiModel do
 
   end
 
+  describe 'parse_include' do
+
+    example do
+      expect(WebApiModel.parse_include('foo')).to eq [
+        {
+          foo: {},
+        },
+      ]
+
+      expect(WebApiModel.parse_include('foo.bar')).to eq [
+        {
+          foo: {
+            bar: {},
+          },
+        },
+      ]
+
+      expect(WebApiModel.parse_include('foo.bar.hoge')).to eq [
+        {
+          foo: {
+            bar: {
+              hoge: {},
+            },
+          },
+        },
+      ]
+    end
+
+    example 'multiple' do
+      expect(WebApiModel.parse_include('foo,bar')).to eq [
+        {
+          foo: {},
+        },
+        {
+          bar: {},
+        },
+      ]
+    end
+
+    example 'empty' do
+      expect(WebApiModel.parse_include('')).to eq []
+      expect(WebApiModel.parse_include(' ')).to eq []
+      expect(WebApiModel.parse_include(nil)).to eq []
+    end
+
+  end
+
 end
