@@ -13,6 +13,10 @@ class Api::BaseController < ActionController::API
     render json: { message: 'Authentication failed' }, status: :unauthorized
   end
 
+  rescue_from ActionController::ParameterMissing do |e|
+    render json: { message: e }, status: 400
+  end
+
   private
 
     def request_body
