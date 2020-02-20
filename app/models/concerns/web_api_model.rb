@@ -10,11 +10,11 @@ module WebApiModel
       result = self
 
       if params[:q].present?
-        result = result.web_api_search(params[:q])
+        result = WebApiModel.search(result, params[:q])
       end
 
       if params[:order].present?
-        result = result.web_api_order(params[:order])
+        result = WebApiModel.order(result, params[:order])
       else
         result.order(:id)
       end
@@ -24,27 +24,35 @@ module WebApiModel
         .per(params[:per])
     }
 
+  end
+
+  class << self
 
     # <name><operator><value>の形式で文字列を渡すとその条件で検索する
     # 存在しないフィールドが指定された場合は無視する
-    scope :web_api_search, ->(query){
-      return if query.blank?
-      result = self
-      params = WebApiModel.parse_query(query)
-      params.each do |param|
-        next unless has_attribute?(param[:name])
+    def search(relation, query)
+      result = relation
+      if query.blank?
+        result
+      end
+
+      model_class = relation.model
+
+      parse_query(query).each do |param|
+        next unless model_class.has_attribute?(param[:name])
         result = result.where("#{param[:name]} #{param[:operator]} ?", param[:value])
       end
+
       result
-    }
+    end
 
     # 'name' → name昇順
     # '-name' → name降順
     # 'name,created_at' → 複合ソート
-    scope :web_api_order, ->(order){
-      result = self
+    def order(relation, order)
+      result = relation
 
-      orders = WebApiModel.parse_order(order)
+      orders = parse_order(order)
 
       orders.each do |hash|
         result = result.order({hash[:sort] => hash[:order]})
@@ -55,18 +63,14 @@ module WebApiModel
       end
 
       result
-    }
+    end
 
-  end
-
-  class << self
-
-    def parse_query(query)
-      if query.blank?
+    def parse_query(text)
+      if text.blank?
         return []
       end
 
-      query.split(/[[:blank:]]+/).map do |word|
+      text.split(/[[:blank:]]+/).map do |word|
         match = /((?<name>[^:]+)[:](?<operator>[<>=]*))?(?<value>.*)/.match(word)
         name = match[:name]
         operator = match[:operator]
