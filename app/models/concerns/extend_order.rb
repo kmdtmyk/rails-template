@@ -24,7 +24,7 @@ module ExtendOrder
 
   module ClassMethods
 
-    def order_by(hash)
+    def order_names(hash)
 
       hash = HashWithIndifferentAccess.new(hash)
 
