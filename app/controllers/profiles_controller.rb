@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UsersController < BaseController
+class ProfilesController < BaseController
 
   def edit
     @user = current_user

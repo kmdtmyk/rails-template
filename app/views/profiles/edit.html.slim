@@ -2,7 +2,7 @@
 
 h4.mb-3 ユーザ情報変更
 
-= form_with(model: @user, local: true) do |form|
+= form_with(model: @user, url: profile_path, local: true) do |form|
   = hidden_referrer
   .form-row
     .form-group
@@ -20,7 +20,7 @@ hr
 
 h4.mb-3 パスワード変更
 
-= form_with(model: @user, local: true) do |form|
+= form_with(model: @user, url: profile_path, local: true) do |form|
   = hidden_referrer
 
   .form-inline.form-group

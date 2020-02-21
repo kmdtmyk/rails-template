@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     },
   }
 
-  resource :user, only: [:edit, :update]
+  resource :profile, only: [:edit, :update]
   resources :notices, only: [:index]
   resources :orders, except: [:show]
   resources :books, except: [:show]
