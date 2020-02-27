@@ -16,7 +16,7 @@ module WebApiModel
       if params[:order].present?
         result = WebApiModel.order(result, params[:order])
       else
-        result.order(:id)
+        result = result.order(:id)
       end
 
       result
