@@ -19,6 +19,10 @@ module WebApiModel
         result = result.order(:id)
       end
 
+      if params[:include].present?
+        result = result.includes(WebApiModel.parse_include(params[:include]))
+      end
+
       result
         .page(params[:page])
         .per(params[:per])
