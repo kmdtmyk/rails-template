@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::V1::User::PasswordsController < Api::BaseController
+class Api::V1::User::PasswordsController < Api::V1::BaseController
 
   before_action :authenticate_user!
 

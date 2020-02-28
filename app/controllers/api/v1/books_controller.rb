@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::V1::BooksController < Api::BaseController
+class Api::V1::BooksController < Api::V1::BaseController
 
   def index
     render json: Book.web_api_index(params)

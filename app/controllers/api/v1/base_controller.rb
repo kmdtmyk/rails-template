@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::BaseController < ActionController::API
+class Api::V1::BaseController < ActionController::API
   include JwtAuthenticate
 
   #before_action :authenticate_user!
