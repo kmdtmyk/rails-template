@@ -74,19 +74,27 @@ module WebApiModel
         return []
       end
 
-      text.split(/[[:blank:]]+/).map do |word|
+      result = []
+
+      text.split(/[[:blank:]]+/).each do |word|
         match = /((?<name>[^:]+)[:](?<operator>[<>=]*))?(?<value>.*)/.match(word)
         name = match[:name]
         operator = match[:operator]
         operator = '=' unless operator.in? %w(< > <= >=)
         value = match[:value]
-        {
-          name: name,
-          operator: operator,
-          value: value,
-        }
+        begin
+          result << {
+            name: name,
+            operator: operator,
+            value: JSON.parse(value),
+          }
+        rescue
+          # do nothing
+        end
+
       end
 
+      result
     end
 
     def parse_order(text)

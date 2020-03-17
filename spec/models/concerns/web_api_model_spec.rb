@@ -1,54 +1,86 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe WebApiModel do
 
   describe 'parse_query' do
 
-    example 'basic' do
+    example 'number' do
+      expect(WebApiModel.parse_query('id:1')).to eq [
+        { name: 'id', operator: '=', value: 1 },
+      ]
+    end
 
-      expect(WebApiModel.parse_query('id:5')).to eq [
-        { name: 'id', operator: '=', value: '5' },
+    example 'string' do
+
+      expect(WebApiModel.parse_query('name:"foo"')).to eq [
+        { name: 'name', operator: '=', value: "foo" },
       ]
 
-      expect(WebApiModel.parse_query('id:>5')).to eq [
-        { name: 'id', operator: '>', value: '5' },
-      ]
-
-      expect(WebApiModel.parse_query('id:>=5')).to eq [
-        { name: 'id', operator: '>=', value: '5' },
-      ]
-
-      expect(WebApiModel.parse_query('id:<5')).to eq [
-        { name: 'id', operator: '<', value: '5' },
-      ]
-
-      expect(WebApiModel.parse_query('id:<=5')).to eq [
-        { name: 'id', operator: '<=', value: '5' },
-      ]
-
-      expect(WebApiModel.parse_query('id:')).to eq [
-        { name: 'id', operator: '=', value: '' },
-      ]
-
-      expect(WebApiModel.parse_query('updated_at:>2019-05-15')).to eq [
+      expect(WebApiModel.parse_query('updated_at:>"2019-05-15"')).to eq [
         { name: 'updated_at', operator: '>', value: '2019-05-15' },
       ]
 
-      expect(WebApiModel.parse_query('updated_at:>2019-08-27T18:09:48.073+09:00')).to eq [
+      expect(WebApiModel.parse_query('updated_at:>"2019-08-27T18:09:48.073+09:00"')).to eq [
         { name: 'updated_at', operator: '>', value: '2019-08-27T18:09:48.073+09:00' },
       ]
 
     end
 
-    example 'multiple' do
-      expect(WebApiModel.parse_query('name:foo id:>5')).to eq [
-        { name: 'name', operator: '=', value: 'foo' },
-        { name: 'id', operator: '>', value: '5' },
+    example 'boolean' do
+      expect(WebApiModel.parse_query('foo:true')).to eq [
+        { name: 'foo', operator: '=', value: true },
       ]
 
-      expect(WebApiModel.parse_query('name:foo　id:>5')).to eq [
+      expect(WebApiModel.parse_query('foo:false')).to eq [
+        { name: 'foo', operator: '=', value: false },
+      ]
+    end
+
+    example 'null' do
+      expect(WebApiModel.parse_query('foo:null')).to eq [
+        { name: 'foo', operator: '=', value: nil },
+      ]
+    end
+
+    example 'ignore invalid value' do
+      expect(WebApiModel.parse_query('name:"abc')).to eq []
+    end
+
+    example 'operator' do
+
+      expect(WebApiModel.parse_query('id:5')).to eq [
+        { name: 'id', operator: '=', value: 5 },
+      ]
+
+      expect(WebApiModel.parse_query('id:>5')).to eq [
+        { name: 'id', operator: '>', value: 5 },
+      ]
+
+      expect(WebApiModel.parse_query('id:>=5')).to eq [
+        { name: 'id', operator: '>=', value: 5 },
+      ]
+
+      expect(WebApiModel.parse_query('id:<5')).to eq [
+        { name: 'id', operator: '<', value: 5 },
+      ]
+
+      expect(WebApiModel.parse_query('id:<=5')).to eq [
+        { name: 'id', operator: '<=', value: 5 },
+      ]
+
+    end
+
+    example 'multiple' do
+      expect(WebApiModel.parse_query('name:"foo" id:>5')).to eq [
         { name: 'name', operator: '=', value: 'foo' },
-        { name: 'id', operator: '>', value: '5' },
+        { name: 'id', operator: '>', value: 5 },
+      ]
+
+      expect(WebApiModel.parse_query('name:"foo"　id:>5')).to eq [
+        { name: 'name', operator: '=', value: 'foo' },
+        { name: 'id', operator: '>', value: 5 },
       ]
     end
 
