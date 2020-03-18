@@ -94,7 +94,7 @@ module WebApiModel
 
       result = []
 
-      regexp = /((?<name>-?[a-z._]+):(?<operator>[<>=]*))(?<value>([^"[:blank:]]+|"[^"]+"))/
+      regexp = /((?<name>-?[a-z._]+):(?<operator>[<>=]*))(?<value>([^"[:blank:]]+|".+(?!\\)"))/
 
       text.scan(regexp).each do |name, operator, value|
         begin

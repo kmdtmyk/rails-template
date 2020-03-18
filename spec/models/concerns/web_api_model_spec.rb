@@ -21,6 +21,10 @@ RSpec.describe WebApiModel do
         { name: 'name', operator: '=', value: 'foo bar', not: false },
       ]
 
+      expect(WebApiModel.parse_query('name:"foo \"bar\" hoge"')).to eq [
+        { name: 'name', operator: '=', value: 'foo "bar" hoge', not: false },
+      ]
+
       expect(WebApiModel.parse_query('updated_at:>"2019-05-15"')).to eq [
         { name: 'updated_at', operator: '>', value: '2019-05-15', not: false },
       ]
