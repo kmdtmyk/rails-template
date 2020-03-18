@@ -78,7 +78,7 @@ module WebApiModel
 
       text.split(/[[:blank:]]+/).each do |word|
         match = /((?<name>[^:]+)[:](?<operator>[<>=]*))?(?<value>.*)/.match(word)
-        name = match[:name]
+        name = match[:name].delete_prefix('-')
         operator = match[:operator]
         operator = '=' unless operator.in? %w(< > <= >=)
         value = match[:value]
@@ -87,6 +87,7 @@ module WebApiModel
             name: name,
             operator: operator,
             value: JSON.parse(value),
+            not: match[:name].start_with?('-'),
           }
         rescue
           # do nothing
