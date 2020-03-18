@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   include ExtendOrder
   include BelongsToUser
   include ModelToCsv
+  include WebApiModel
 
   has_many :details, class_name: 'OrderDetail', dependent: :destroy
   accepts_nested_attributes_for :details, allow_destroy: true
