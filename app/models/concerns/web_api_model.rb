@@ -51,18 +51,17 @@ module WebApiModel
 
       parse_query(query).each do |param|
         next unless model_class.has_attribute?(param[:name])
+
         if param[:operator] == '='
-          if param[:not] == true
-            result = result.where.not(param[:name] => param[:value])
-          else
-            result = result.where(param[:name] => param[:value])
-          end
+          conditions = { param[:name] => param[:value] }
         else
-          if param[:not] == true
-            result = result.where.not("#{param[:name]} #{param[:operator]} ?", param[:value])
-          else
-            result = result.where("#{param[:name]} #{param[:operator]} ?", param[:value])
-          end
+          conditions = ["#{param[:name]} #{param[:operator]} ?", param[:value]]
+        end
+
+        if param[:not] == true
+          result = result.where.not(conditions)
+        else
+          result = result.where(conditions)
         end
       end
 
