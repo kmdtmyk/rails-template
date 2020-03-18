@@ -63,7 +63,7 @@ class OrdersController < BaseController
         ]
       )
 
-      result[:details_attributes].each do |index, detail|
+      result[:details_attributes]&.each do |index, detail|
         if detail[:item_id].blank? && detail[:quantity].blank?
           detail[:_destroy] = true
         end
