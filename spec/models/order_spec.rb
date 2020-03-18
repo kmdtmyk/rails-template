@@ -42,6 +42,24 @@ RSpec.describe Order, type: :model do
       )
     end
 
+    example 'operator' do
+      expect(Order::WebApi.index(q: 'id:>1').to_sql).to start_with(
+        Order.where('id > ?', 1).to_sql
+      )
+
+      expect(Order::WebApi.index(q: 'id:>=1').to_sql).to start_with(
+        Order.where('id >= ?', 1).to_sql
+      )
+
+      expect(Order::WebApi.index(q: 'id:<1').to_sql).to start_with(
+        Order.where('id < ?', 1).to_sql
+      )
+
+      expect(Order::WebApi.index(q: 'id:<=1').to_sql).to start_with(
+        Order.where('id <= ?', 1).to_sql
+      )
+    end
+
     example 'multiple' do
       expect(Order::WebApi.index(q: 'id:1 comment:"foo"').to_sql).to start_with(
         Order.where(id: 1).where(comment: 'foo').to_sql
