@@ -13,9 +13,12 @@ RSpec.describe WebApiModel do
     end
 
     example 'string' do
-
       expect(WebApiModel.parse_query('name:"foo"')).to eq [
-        { name: 'name', operator: '=', value: "foo", not: false },
+        { name: 'name', operator: '=', value: 'foo', not: false },
+      ]
+
+      expect(WebApiModel.parse_query('name:"foo bar"')).to eq [
+        { name: 'name', operator: '=', value: 'foo bar', not: false },
       ]
 
       expect(WebApiModel.parse_query('updated_at:>"2019-05-15"')).to eq [
@@ -25,7 +28,6 @@ RSpec.describe WebApiModel do
       expect(WebApiModel.parse_query('updated_at:>"2019-08-27T18:09:48.073+09:00"')).to eq [
         { name: 'updated_at', operator: '>', value: '2019-08-27T18:09:48.073+09:00', not: false },
       ]
-
     end
 
     example 'boolean' do

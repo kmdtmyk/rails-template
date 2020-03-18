@@ -94,23 +94,19 @@ module WebApiModel
 
       result = []
 
-      text.split(/[[:blank:]]+/).each do |word|
-        match = /((?<name>[^:]+)[:](?<operator>[<>=]*))?(?<value>.*)/.match(word)
-        name = match[:name].delete_prefix('-')
-        operator = match[:operator]
-        operator = '=' unless operator.in? %w(< > <= >=)
-        value = match[:value]
+      regexp = /((?<name>-?[a-z._]+):(?<operator>[<>=]*))(?<value>([^"[:blank:]]+|"[^"]+"))/
+
+      text.scan(regexp).each do |name, operator, value|
         begin
           result << {
-            name: name,
-            operator: operator,
+            name: name.delete_prefix('-'),
+            operator: operator.in?(%w(< > <= >=)) ? operator : '=',
             value: JSON.parse(value),
-            not: match[:name].start_with?('-'),
+            not: name.start_with?('-'),
           }
         rescue
           # do nothing
         end
-
       end
 
       result
