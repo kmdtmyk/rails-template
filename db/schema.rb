@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
   create_table "orders", force: :cascade do |t|
     t.date "date"
     t.integer "total_price"
+    t.text "comment"
     t.bigint "create_user_id"
     t.bigint "update_user_id"
     t.datetime "created_at", precision: 6, null: false

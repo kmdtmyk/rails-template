@@ -52,6 +52,7 @@ class OrdersController < BaseController
     def order_params
       result = params.require(:order).permit(
         :date,
+        :comment,
         details_attributes: [
           :id,
           :item_id,

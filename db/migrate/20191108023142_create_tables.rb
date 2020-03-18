@@ -27,6 +27,7 @@ class CreateTables < ActiveRecord::Migration[6.0]
     create_table :orders do |t|
       t.date :date
       t.integer :total_price
+      t.text :comment
 
       t.references :create_user
       t.references :update_user

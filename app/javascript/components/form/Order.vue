@@ -5,6 +5,10 @@ div
       label Date
       div
         DateField(v-model='order.date' name='order[date]')
+    .form-group
+      label Comment
+      div
+        TextField(v-model='order.comment' name='order[comment]' size=100)
   table.table.table-hover.table-responsive
     thead
       tr

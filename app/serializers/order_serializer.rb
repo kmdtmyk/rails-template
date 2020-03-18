@@ -5,6 +5,7 @@ class OrderSerializer < ActiveModel::Serializer
   attributes(
     :id,
     :date,
+    :comment,
   )
 
   has_many :details
