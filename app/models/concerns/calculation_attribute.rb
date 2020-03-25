@@ -10,6 +10,10 @@ module CalculationAttribute
         value = instance_exec(&proc)
         write_attribute(name, value)
       end
+
+      define_method name do
+        instance_exec(&proc)
+      end
     end
 
   end

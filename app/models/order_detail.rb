@@ -6,7 +6,9 @@ class OrderDetail < ApplicationRecord
   belongs_to :item, optional: true
 
   calculation_attribute :total_price, ->{
-    (item_price || 0) * (quantity || 0)
+    if item_price.present? && quantity.present?
+      item_price * quantity
+    end
   }
 
   def lookup_item
