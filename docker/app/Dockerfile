@@ -1,5 +1,7 @@
 FROM ruby:2.7.1-alpine3.11
 
+RUN echo 'Set disable_coredump false' >> /etc/sudo.conf
+
 RUN apk update && \
     apk add \
     # nokogiri
