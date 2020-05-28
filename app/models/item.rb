@@ -10,7 +10,8 @@ class Item < ApplicationRecord
   belongs_to_user prefix: :update
 
   order_names(
-    update_user: 'users.name'
+    create_user: { create_user: :name },
+    update_user: { update_user: :name },
   )
 
   search_scope :search_scope do

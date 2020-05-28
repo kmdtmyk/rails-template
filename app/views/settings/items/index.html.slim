@@ -9,26 +9,28 @@
   div
     = new_link_to 'New', new_settings_item_path
 
-= render_with_pagination @items.includes(:update_user) do |items|
+ruby:
+  items = @items.includes(:create_user, :update_user)
+
+= render_with_pagination items do |items|
   .table-sticky.max-vh-70
     table.table.table-striped.table-hover
       thead
         tr
-          th
-            = sort_link_to :name
-              span Name
-          th
-            = sort_link_to :furigana
-              span Furigana
-          th
-            = sort_link_to :price
-              span Price
-          th
-            = sort_link_to :update_user
-              span Update user
-          th
-            = sort_link_to :updated_at
-              span Updated at
+          th= sort_link_to :name
+            |Name
+          th= sort_link_to :furigana
+            |Furigana
+          th= sort_link_to :price
+            |Price
+          th= sort_link_to :create_user
+            |Create user
+          th= sort_link_to :created_at
+            |Created at
+          th= sort_link_to :update_user
+            |Update user
+          th= sort_link_to :updated_at
+            |Updated at
           th colspan=2
       tbody
         - items.each do |item|
@@ -36,6 +38,8 @@
             td= item.name
             td= item.furigana
             td= item.price
+            td= item.create_user_name
+            td= format_datetime item.created_at
             td= item.update_user_name
             td= format_datetime item.updated_at
             td.btn-cell= edit_link_to 'Edit', edit_settings_item_path(item)
