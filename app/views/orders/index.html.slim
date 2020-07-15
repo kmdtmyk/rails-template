@@ -10,9 +10,9 @@
         span 〜
         = date_field_tag 'to_date', params[:to_date]
       .form-group
-        button type='button' name='date_today' 今日
-        button.mx-1 type='button' name='date_week' 1週間
-        button type='button' name='date_month' 1ヶ月
+        button.btn type='button' name='date_today' 今日
+        button.btn.mx-1 type='button' name='date_week' 1週間
+        button.btn type='button' name='date_month' 1ヶ月
       .form-group
         = submit_tag '検索', class: 'btn btn-info'
 
