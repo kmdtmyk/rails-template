@@ -19,12 +19,8 @@ class BooksController < BaseController
 
   def download_csv(books)
     streaming_download('books.csv') do |stream|
-      books.ids.each_slice(1000) do |ids|
-        csv = []
-        Book.find(ids).each do |book|
-          csv << book.to_csv
-        end
-        stream.write csv.join("\n") + "\n"
+      CsvGenerator::Book.generate(books) do |csv|
+        stream.write csv
       end
     end
   end
