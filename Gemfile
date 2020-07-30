@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0', '>= 6.0.3.1'
+gem 'rails', '~> 6.0', '>= 6.0.3.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1', '>= 1.1.4'
 # Use Puma as the app server
@@ -38,12 +38,16 @@ gem 'active_model_serializers', '~> 0.10.10'
 
 gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '8cd0f91b90adc651d40cf28a28a5ca45e135dbfc'
 
+# Avoid rack 2.2.x bug
+# https://github.com/rack/rack/issues/1619
+gem 'rack', '~> 2.1.4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
-  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
   gem 'faker', '~> 2.10', '>= 2.10.1'
 end
