@@ -40,6 +40,10 @@ RSpec.describe SearchText do
       expect(SearchText.normalize('①')).to eq '1'
     end
 
+    example 'emoji' do
+      expect(SearchText.normalize('寿司🍣すし')).to eq '寿司🍣スシ'
+    end
+
     example 'nil' do
       expect(SearchText.normalize(nil)).to eq nil
     end

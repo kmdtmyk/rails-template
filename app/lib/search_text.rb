@@ -7,7 +7,7 @@ module SearchText
     result = text
     result = result.gsub('う゛', 'ヴ')
     result = result.unicode_normalize(:nfkc).downcase
-    result = NKF.nkf('-w --katakana', result)
+    result = NKF.nkf('-w -W --katakana', result)
   end
 
 end
