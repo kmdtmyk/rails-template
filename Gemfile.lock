@@ -327,7 +327,7 @@ DEPENDENCIES
   sassc-rails (~> 2.1)
   search_cop (~> 1.1)
   selenium-webdriver
-  slim (~> 4.0, >= 4.0.1)
+  slim (~> 4.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   web-console (>= 3.3.0)
