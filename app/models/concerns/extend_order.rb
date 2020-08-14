@@ -58,6 +58,10 @@ module ExtendOrder
               .left_join_as(table)
               .order("\"#{table}\".\"#{column}\" #{order} NULLS LAST")
           end
+        elsif sort_column.is_a? Array
+          sort_column.each do |column|
+            result = result.safe_order(column, order)
+          end
         else
           result = result.order("#{sort_column} #{order} NULLS LAST")
         end
