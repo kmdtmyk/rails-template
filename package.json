@@ -2,6 +2,7 @@
   "name": "app",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@kmdtmyk/midnight": "^0.3.3",
     "@kmdtmyk/vue-fields": "^0.1.8",
     "@rails/actioncable": "^6.0.3",

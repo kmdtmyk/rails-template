@@ -66,7 +66,13 @@ module.exports = function(api) {
         {
           async: false
         }
-      ]
+      ],
+      [
+        require('@babel/plugin-proposal-optional-chaining').default,
+        {
+          loose: true
+        }
+      ],
     ].filter(Boolean)
   }
 }
