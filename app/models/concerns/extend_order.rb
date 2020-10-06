@@ -37,15 +37,18 @@ module ExtendOrder
 
       hash = HashWithIndifferentAccess.new(hash)
 
-      scope :order_by, -> (sort, order = 'asc'){
+      scope :order_by, ->(sort){
         result = self
 
-        if 'asc'.casecmp? order.to_s
-          order = 'ASC'
-        elsif 'desc'.casecmp? order.to_s
-          order = 'DESC'
-        else
+        if sort.nil?
           return result
+        end
+
+        order = if sort.start_with?('-')
+          sort = sort.delete_prefix('-')
+          'DESC'
+        else
+          'ASC'
         end
 
         sort_column = hash[sort]

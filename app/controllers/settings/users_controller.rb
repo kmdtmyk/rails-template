@@ -6,7 +6,7 @@ class Settings::UsersController < BaseController
   def index
     @users = User
       .search(params)
-      .safe_order(params[:sort], params[:order])
+      .order_by(params[:sort])
   end
 
   def new

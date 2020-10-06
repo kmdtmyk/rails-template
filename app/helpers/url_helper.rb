@@ -21,13 +21,11 @@ module UrlHelper
 
     query_hash.delete :page
 
-    if name.to_s.casecmp? params[:sort]&.to_s
-      order = 'asc'.casecmp?(params[:order]&.to_s) ? 'desc' : 'asc'
-    else
-      order = 'asc'
+    if name.to_s == params[:sort].to_s
+      name = "-#{name}"
     end
 
-    url_for(params: query_hash.merge(sort: name, order: order))
+    url_for(params: query_hash.merge(sort: name))
   end
 
 end

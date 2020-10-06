@@ -5,7 +5,7 @@ class Autocomplete::ItemsController < BaseController
   def index
     items = Item
       .search(params)
-      .order_by(params[:sort], params[:order])
+      .order_by(params[:sort])
       .page(params[:page])
       .per(params[:per])
 

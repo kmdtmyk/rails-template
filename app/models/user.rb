@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  include SearchCop
   include ExtendOrder
+  include SearchCop
   include SetSearchText
 
   devise(
@@ -73,5 +73,7 @@ class User < ApplicationRecord
     }
     JWT.encode(payload, ENV['SECRET_KEY_BASE'])
   end
+
+  order_names({})
 
 end

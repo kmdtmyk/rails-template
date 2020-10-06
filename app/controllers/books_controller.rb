@@ -9,7 +9,7 @@ class BooksController < BaseController
   def index
     @books = Book
       .search(params[:q])
-      .order_by(params[:sort], params[:order])
+      .order_by(params[:sort])
 
     respond_to do |format|
       format.html { render layout: 'wide' }

@@ -6,7 +6,7 @@ class OrdersController < BaseController
   def index
     @orders = Order
       .search(params)
-      .order_by(params[:sort], params[:order])
+      .order_by(params[:sort])
   end
 
   def new
