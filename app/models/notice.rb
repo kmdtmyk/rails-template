@@ -29,8 +29,6 @@ class Notice < ApplicationRecord
       .where('? < publish_end_datetime OR publish_end_datetime IS NULL', now)
   }
 
-  order_names({})
-
   PER_PAGE = 10
 
 end

@@ -74,6 +74,4 @@ class User < ApplicationRecord
     JWT.encode(payload, ENV['SECRET_KEY_BASE'])
   end
 
-  order_names({})
-
 end
