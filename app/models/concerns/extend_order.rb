@@ -5,7 +5,7 @@ module ExtendOrder
 
   included do
 
-    scope :safe_order, -> (name, order = 'asc') {
+    scope :safe_order, ->(name, order = 'asc'){
 
       name = name.to_s.downcase
 
@@ -44,29 +44,33 @@ module ExtendOrder
           return result
         end
 
-        order = if sort.start_with?('-')
-          sort = sort.delete_prefix('-')
-          'DESC'
-        else
-          'ASC'
-        end
+        sort.split(',').each do |sort|
 
-        sort_column = hash[sort]
+          order = if sort.start_with?('-')
+            sort = sort.delete_prefix('-')
+            'DESC'
+          else
+            'ASC'
+          end
 
-        if sort_column.nil?
-          result = result.safe_order(sort, order)
-        elsif sort_column.is_a? Hash
-          sort_column.each do |table, column|
-            result = result
-              .left_join_as(table)
-              .order("\"#{table}\".\"#{column}\" #{order} NULLS LAST")
+          sort_column = hash[sort]
+
+          if sort_column.nil?
+            result = result.safe_order(sort, order)
+          elsif sort_column.is_a? Hash
+            sort_column.each do |table, column|
+              result = result
+                .left_join_as(table)
+                .order("\"#{table}\".\"#{column}\" #{order} NULLS LAST")
+            end
+          elsif sort_column.is_a? Array
+            sort_column.each do |column|
+              result = result.safe_order(column, order)
+            end
+          else
+            result = result.order("#{sort_column} #{order} NULLS LAST")
           end
-        elsif sort_column.is_a? Array
-          sort_column.each do |column|
-            result = result.safe_order(column, order)
-          end
-        else
-          result = result.order("#{sort_column} #{order} NULLS LAST")
+
         end
 
         result
