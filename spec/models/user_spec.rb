@@ -58,5 +58,13 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe 'order_by' do
+
+    example 'basic' do
+      expect(User.order_by('name').to_sql).to include 'ORDER BY users.name ASC NULLS LAST'
+      expect(User.order_by('-name').to_sql).to include 'ORDER BY users.name DESC NULLS LAST'
+    end
+
+  end
 
 end
