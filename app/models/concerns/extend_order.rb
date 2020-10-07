@@ -11,7 +11,7 @@ module ExtendOrder
 
       return unless model.attribute_names.include? name
 
-      sort = "#{model.table_name}.#{name}"
+      sort = "\"#{model.table_name}\".\"#{name}\""
 
       if 'asc'.casecmp? order.to_s
         order("#{sort} ASC NULLS LAST")
