@@ -37,7 +37,7 @@ export default {
         if(query == null){
           return []
         }
-        const result = await axios.get(`/autocomplete/items?q=${query}`)
+        const result = await axios.get(`/api/web/items?q=${query}`)
         return result.data
       }
     }

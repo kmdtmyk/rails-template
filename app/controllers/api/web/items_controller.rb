@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Autocomplete::ItemsController < BaseController
+class Api::Web::ItemsController < Api::Web::BaseController
 
   def index
     items = Item

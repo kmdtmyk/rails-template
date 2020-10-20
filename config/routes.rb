@@ -30,11 +30,11 @@ Rails.application.routes.draw do
     resources :items, except: [:show]
   end
 
-  namespace :autocomplete do
-    resources :items, only: [:index]
-  end
-
   namespace :api do
+    namespace :web do
+      resources :items, only: [:index]
+    end
+
     namespace :v1 do
       resource :login, only: [:create]
       resource :user, only: [], module: :user do
