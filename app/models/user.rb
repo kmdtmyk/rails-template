@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  include SearchCop
   include ExtendOrder
+  include SearchCop
   include SetSearchText
 
   devise(

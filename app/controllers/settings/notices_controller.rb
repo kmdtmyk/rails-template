@@ -6,7 +6,7 @@ class Settings::NoticesController < BaseController
   def index
     @notices = Notice
       .search(params)
-      .safe_order(params[:sort], params[:order])
+      .order_by(params[:sort])
   end
 
   def new

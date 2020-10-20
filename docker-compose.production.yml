@@ -14,15 +14,14 @@ services:
     volumes:
       - .:/app
       - ./vendor/bundle:/usr/local/bundle
-    command: bash -c 'rm -f tmp/pids/server.pid; rails s -b 0.0.0.0 & bin/webpack-dev-server'
-    ports:
-      - 3035:3035
+    command: bash -c 'rm -f tmp/pids/server.pid; rails s -b 0.0.0.0'
     depends_on:
       - db
     logging:
       options:
         max-size: 10m
         max-file: '10'
+    restart: always
   db:
     build:
       context: ./docker/db
@@ -40,6 +39,7 @@ services:
       options:
         max-size: 10m
         max-file: '10'
+    restart: always
   web:
     build:
       context: ./docker/web
@@ -55,5 +55,6 @@ services:
       options:
         max-size: 10m
         max-file: '10'
+    restart: always
 volumes:
   db:

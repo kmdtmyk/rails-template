@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
 RSpec.describe SearchText do
 
   describe 'normalize' do
@@ -36,6 +38,10 @@ RSpec.describe SearchText do
       expect(SearchText.normalize('㍻')).to eq '平成'
       expect(SearchText.normalize('㈱')).to eq '(株)'
       expect(SearchText.normalize('①')).to eq '1'
+    end
+
+    example 'emoji' do
+      expect(SearchText.normalize('寿司🍣すし')).to eq '寿司🍣スシ'
     end
 
     example 'nil' do

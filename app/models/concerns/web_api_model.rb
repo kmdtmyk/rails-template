@@ -1,32 +1,43 @@
 # frozen_string_literal: true
 
 module WebApiModel
-  extend ActiveSupport::Concern
-
-  included do
-
-    scope :web_api_index, ->(params){
-
-      result = self
-
-      if params[:q].present?
-        result = WebApiModel.search(result, params[:q])
-      end
-
-      if params[:order].present?
-        result = WebApiModel.order(result, params[:order])
-      else
-        result.order(:id)
-      end
-
-      result
-        .page(params[:page])
-        .per(params[:per])
-    }
-
-  end
 
   class << self
+
+    def included(model_class)
+
+      model_class.const_set 'WebApi', Module.new{
+
+        class << self
+
+          def index(params)
+
+            result = module_parent.all
+
+            if params[:q].present?
+              result = WebApiModel.search(result, params[:q])
+            end
+
+            if params[:order].present?
+              result = WebApiModel.order(result, params[:order])
+            else
+              result = result.order(:id)
+            end
+
+            if params[:include].present?
+              result = result.includes(WebApiModel.parse_include(params[:include]))
+            end
+
+            result
+              .page(params[:page])
+              .per(params[:per])
+          end
+
+        end
+
+      }
+
+    end
 
     # <name><operator><value>の形式で文字列を渡すとその条件で検索する
     # 存在しないフィールドが指定された場合は無視する
@@ -40,7 +51,18 @@ module WebApiModel
 
       parse_query(query).each do |param|
         next unless model_class.has_attribute?(param[:name])
-        result = result.where("#{param[:name]} #{param[:operator]} ?", param[:value])
+
+        if param[:operator] == '='
+          conditions = { param[:name] => param[:value] }
+        else
+          conditions = ["#{param[:name]} #{param[:operator]} ?", param[:value]]
+        end
+
+        if param[:not] == true
+          result = result.where.not(conditions)
+        else
+          result = result.where(conditions)
+        end
       end
 
       result
@@ -70,19 +92,24 @@ module WebApiModel
         return []
       end
 
-      text.split(/[[:blank:]]+/).map do |word|
-        match = /((?<name>[^:]+)[:](?<operator>[<>=]*))?(?<value>.*)/.match(word)
-        name = match[:name]
-        operator = match[:operator]
-        operator = '=' unless operator.in? %w(< > <= >=)
-        value = match[:value]
-        {
-          name: name,
-          operator: operator,
-          value: value,
-        }
+      result = []
+
+      regexp = /((?<name>-?[a-z._]+):(?<operator>[<>=]*))(?<value>([^"[:blank:]]+|".+(?!\\)"))/
+
+      text.scan(regexp).each do |name, operator, value|
+        begin
+          result << {
+            name: name.delete_prefix('-'),
+            operator: operator.in?(%w(< > <= >=)) ? operator : '=',
+            value: JSON.parse(value),
+            not: name.start_with?('-'),
+          }
+        rescue
+          # do nothing
+        end
       end
 
+      result
     end
 
     def parse_order(text)

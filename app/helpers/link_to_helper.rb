@@ -48,11 +48,13 @@ module LinkToHelper
   def sort_link_to(name, options = nil, &block)
     options ||= {}
 
-    if name.to_s.casecmp? params[:sort]&.to_s
-      if 'asc'.casecmp? params[:order]&.to_s
-        icon = fas('sort-up')
-      elsif 'desc'.casecmp? params[:order]&.to_s
+    sort = params[:sort].to_s
+
+    if name.to_s == sort.delete_prefix('-')
+      if sort.start_with?('-')
         icon = fas('sort-down')
+      else
+        icon = fas('sort-up')
       end
     end
 

@@ -52,6 +52,7 @@ module BelongsToUser
     if has_attribute? :update_user_id
       self.update_user_id = user&.id
     end
+    self.updated_at = Time.current
   end
 
 end

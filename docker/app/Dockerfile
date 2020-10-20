@@ -1,4 +1,6 @@
-FROM ruby:2.6.5-alpine
+FROM ruby:2.6.6-alpine3.11
+
+RUN echo 'Set disable_coredump false' >> /etc/sudo.conf
 
 RUN apk update && \
     apk add \
