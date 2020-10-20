@@ -1,6 +1,6 @@
 #app[v-cloak]
 
-  = form_with(model: order, local: true) do |f|
+  = form_with(model: order) do |f|
     = hidden_referrer
     order-form(v-model='order' :items='items')
     = f.submit
@@ -21,7 +21,7 @@
             dt 更新日時
             dd= format_datetime order.updated_at
 
-/ = form_with(model: order, local: true) do |f|
+/ = form_with(model: order) do |f|
 /   = hidden_referrer
 /   .form-row
 /     .form-group
