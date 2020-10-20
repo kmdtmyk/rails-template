@@ -20,6 +20,7 @@ module App
     config.time_zone = 'Asia/Tokyo'
     config.active_record.default_timezone = :local
     config.action_controller.include_all_helpers = false
+    config.action_view.form_with_generates_remote_forms = false
     config.active_storage.routes_prefix = :files
     config.generators do |g|
       g.test_framework nil

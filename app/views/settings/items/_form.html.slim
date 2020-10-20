@@ -1,0 +1,29 @@
+= form_with(model: [:settings, item]) do |form|
+  = hidden_referrer
+  .form-row
+    .form-group
+      = form.label :name
+      = form.text_field :name
+    .form-group
+      = form.label :furigana
+      = form.text_field :furigana
+    .form-group
+      = form.label :price
+      = form.number_field :price
+  = form.submit
+
+- unless item.new_record?
+  .mt-4
+    dl.attributes.attributes-small
+      div
+        dt 作成者
+        dd= item.create_user_name
+      div
+        dt 作成日時
+        dd= format_datetime item.created_at
+      div
+        dt 更新者
+        dd= item.update_user_name
+      div
+        dt 更新日時
+        dd= format_datetime item.updated_at
