@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     update_user: { update_user: :name },
   )
 
-  search_scope :search_scope do
+  search_scope :search_scope1 do
     attributes :search_name, :search_furigana
   end
 
@@ -22,7 +22,7 @@ class Item < ApplicationRecord
     result = self
 
     if params[:q].present?
-      result = search_scope(SearchText.normalize(params[:q]))
+      result = result.search_scope1(SearchText.normalize(params[:q]))
     end
 
     result
