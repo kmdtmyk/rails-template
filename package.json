@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@kmdtmyk/midnight": "^0.3.3",
-    "@kmdtmyk/vue-fields": "^0.1.8",
+    "@kmdtmyk/vue-fields": "^0.2.5",
     "@rails/actioncable": "^6.0.3",
     "@rails/activestorage": "^6.0.3",
     "@rails/ujs": "^6.0.3",
