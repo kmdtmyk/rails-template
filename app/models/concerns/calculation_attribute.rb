@@ -5,6 +5,7 @@ module CalculationAttribute
 
   class_methods do
 
+    # 他のカラムからの計算で決まるカラム
     def calculation_attribute(name, proc)
       before_validation do
         value = instance_exec(&proc)
