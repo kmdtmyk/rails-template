@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
-  include ExtendOrder
   include BelongsToUser
+  include ExtendOrder
+  include ExtendSearch
   include ModelToCsv
   include WebApiModel
 
@@ -20,12 +21,8 @@ class Order < ApplicationRecord
 
     result = self
 
-    if params[:from_date].present?
-      result = result.where('? <= date', params[:from_date])
-    end
-
-    if params[:to_date].present?
-      result = result.where('date < ?', params[:to_date] + 1)
+    if params[:from_date].present? || params[:to_date].present?
+      result = result.from_to_date_search(:date, params[:from_date], params[:to_date])
     end
 
     result
