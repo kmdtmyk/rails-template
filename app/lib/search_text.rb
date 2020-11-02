@@ -2,6 +2,7 @@
 
 module SearchText
 
+  # 曖昧検索用に文字列を半角英数字・全角カタカナに変換する
   def self.normalize(text)
     return if text.nil?
     result = text
