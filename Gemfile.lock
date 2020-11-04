@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/kmdtmyk/rparam
-  revision: 8cd0f91b90adc651d40cf28a28a5ca45e135dbfc
-  ref: 8cd0f91b90adc651d40cf28a28a5ca45e135dbfc
+  revision: 687785ff5994bdec356950e25c76a7e208d2d9d4
+  ref: 687785ff5994bdec356950e25c76a7e208d2d9d4
   specs:
     rparam (0.1.0)
       rails (>= 5.0.0)

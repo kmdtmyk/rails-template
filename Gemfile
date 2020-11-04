@@ -36,7 +36,7 @@ gem 'search_cop', '~> 1.1'
 gem 'gon', '~> 6.3', '>= 6.3.2'
 gem 'active_model_serializers', '~> 0.10.10'
 
-gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '8cd0f91b90adc651d40cf28a28a5ca45e135dbfc'
+gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '687785ff5994bdec356950e25c76a7e208d2d9d4'
 
 # Avoid rack 2.2.x bug
 # https://github.com/rack/rack/issues/1619
