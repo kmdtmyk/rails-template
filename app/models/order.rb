@@ -17,7 +17,7 @@ class Order < ApplicationRecord
     update_user: 'users.name'
   )
 
-  scope :search, -> (params) {
+  scope :search, ->(params){
 
     result = self
 

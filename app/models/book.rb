@@ -17,7 +17,7 @@ class Book < ApplicationRecord
     update_user: 'users.name'
   )
 
-  scope :search, -> (query) {
+  scope :search, ->(query){
 
     result = self
 
