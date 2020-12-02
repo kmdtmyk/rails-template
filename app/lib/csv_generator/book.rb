@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CsvGenerator::Book < CsvGenerator::Base
-  include FormatHelper
+  include CsvHelper
 
   def headers
     [
@@ -21,8 +21,8 @@ class CsvGenerator::Book < CsvGenerator::Base
         book.name,
         book.price,
         book.release_date,
-        format_datetime(book.created_at),
-        format_datetime(book.updated_at),
+        csv_datetime(book.created_at),
+        csv_datetime(book.updated_at),
       ]
     end
   end

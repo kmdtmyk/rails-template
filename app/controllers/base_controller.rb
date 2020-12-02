@@ -3,6 +3,7 @@
 class BaseController < ApplicationController
   helper FontAwesome5Helper
   helper FormatHelper
+  helper CsvHelper
   helper LinkToHelper
   helper PaginationHelper
   helper UrlHelper
