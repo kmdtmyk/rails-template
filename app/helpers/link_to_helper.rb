@@ -49,8 +49,10 @@ module LinkToHelper
     options ||= {}
 
     sort = params[:sort].to_s
+      .split(',')
+      .find{ |it| it.delete_prefix('-') == name.to_s }
 
-    if name.to_s == sort.delete_prefix('-')
+    if name.to_s == sort&.delete_prefix('-')
       if sort.start_with?('-')
         icon = fas('sort-down')
       else
