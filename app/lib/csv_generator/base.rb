@@ -5,22 +5,22 @@ class CsvGenerator::Base
   DEFAULT_ENCODING = Encoding::UTF_8
   # DEFAULT_ENCODING = Encoding::SJIS
 
-  def self.generate(records, encoding: DEFAULT_ENCODING, &block)
-    new(records).generate(encoding: encoding, &block)
+  def self.generate(records, encoding: DEFAULT_ENCODING, force_quotes: true, &block)
+    new(records).generate(encoding: encoding, force_quotes: force_quotes, &block)
   end
 
   def initialize(records)
     @ids = records.ids
   end
 
-  def generate(encoding: DEFAULT_ENCODING, &block)
+  def generate(encoding: DEFAULT_ENCODING, force_quotes: true, &block)
 
     unless block_given?
       result = ''
     end
 
     if respond_to?(:headers)
-      csv = CSV.generate(write_headers: true, force_quotes: true, encoding: encoding) do |csv|
+      csv = CSV.generate(write_headers: true, force_quotes: force_quotes, encoding: encoding) do |csv|
         csv << headers
       end
 
@@ -32,7 +32,7 @@ class CsvGenerator::Base
     end
 
     @ids.each_slice(500) do |ids|
-      csv = CSV.generate(write_headers: false, force_quotes: true, encoding: encoding) do |csv|
+      csv = CSV.generate(write_headers: false, force_quotes: force_quotes, encoding: encoding) do |csv|
         ids_to_a(ids).each do |row|
           csv << if encoding == Encoding::UTF_8
             row
