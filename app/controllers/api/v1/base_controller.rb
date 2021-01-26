@@ -5,6 +5,10 @@ class Api::V1::BaseController < ActionController::API
 
   #before_action :authenticate_user!
 
+  before_action do
+    params.deep_snakeize!
+  end
+
   rescue_from ActiveRecord::RecordNotFound do
     render json: { message: 'Not Found' }, status: 404
   end

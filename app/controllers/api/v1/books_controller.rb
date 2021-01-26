@@ -12,31 +12,23 @@ class Api::V1::BooksController < Api::V1::BaseController
   end
 
   def create
-    body = transform_nested_attributes(request_body)
-
-    if body.is_a? Array
-      books = body.map do |hash|
-        Book.create(book_params(hash))
-      end
-      render json: books
-    else
-      book = Book.create(book_params(body))
-      render json: book
+    books = params[:books].each(&:transform_nested_params).map do |parameters|
+      Book.create(parameters.permit(permit_values))
     end
-
+    render json: books
   end
 
   def update
-    body = transform_nested_attributes(request_body)
-    book = Book.find(body[:id])
-    book.update(book_params(body))
+    book = Book.find(params[:id])
+    book_params = params[:book].transform_nested_params.permit(permit_values)
+    book.update(book_params)
     render json: book
   end
 
   private
 
-    def book_params(hash)
-      ActionController::Parameters.new(hash).permit(
+    def permit_values
+      [
         :name,
         :price,
         :release_date,
@@ -45,7 +37,7 @@ class Api::V1::BooksController < Api::V1::BaseController
           :content,
           :_destroy,
         ]
-      )
+      ]
     end
 
 end
