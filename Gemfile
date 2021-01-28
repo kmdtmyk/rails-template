@@ -34,7 +34,7 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'jwt', '~> 2.2', '>= 2.2.2'
 gem 'search_cop', '~> 1.1'
 gem 'gon', '~> 6.4'
-gem 'active_model_serializers', '~> 0.10.10'
+gem 'active_model_serializers', '~> 0.10.12'
 
 gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '687785ff5994bdec356950e25c76a7e208d2d9d4'
 
