@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.9', '>= 2.9.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-gem 'rack-dev-mark', '~> 0.7.7'
+gem 'rack-dev-mark', '~> 0.7.9'
 gem 'kaminari', '~> 1.2'
 gem 'slim', '~> 4.1'
 gem 'gretel', '~> 3.0', '>= 3.0.9'
