@@ -28,56 +28,56 @@ module ExtendOrder
       )
     }
 
-    order_names({})
+    scope :order_by, ->(sort){
+      result = self
+
+      if sort.nil?
+        return result
+      end
+
+      config = HashWithIndifferentAccess.new(model.order_by_config)
+
+      sort.split(',').each do |sort|
+
+        order = if sort.start_with?('-')
+          sort = sort.delete_prefix('-')
+          'DESC'
+        else
+          'ASC'
+        end
+
+        sort_column = config[sort]
+
+        if sort_column.nil?
+          result = result.safe_order(sort, order)
+        elsif sort_column.is_a? Hash
+          sort_column.each do |table, column|
+            result = result
+              .left_join_as(table)
+              .order("\"#{table}\".\"#{column}\" #{order} NULLS LAST")
+          end
+        elsif sort_column.is_a? Array
+          sort_column.each do |column|
+            result = result.safe_order(column, order)
+          end
+        else
+          result = result.order("#{sort_column} #{order} NULLS LAST")
+        end
+
+      end
+
+      result
+    }
 
   end
 
   module ClassMethods
 
-    def order_names(hash)
-
-      hash = HashWithIndifferentAccess.new(hash)
-
-      scope :order_by, ->(sort){
-        result = self
-
-        if sort.nil?
-          return result
-        end
-
-        sort.split(',').each do |sort|
-
-          order = if sort.start_with?('-')
-            sort = sort.delete_prefix('-')
-            'DESC'
-          else
-            'ASC'
-          end
-
-          sort_column = hash[sort]
-
-          if sort_column.nil?
-            result = result.safe_order(sort, order)
-          elsif sort_column.is_a? Hash
-            sort_column.each do |table, column|
-              result = result
-                .left_join_as(table)
-                .order("\"#{table}\".\"#{column}\" #{order} NULLS LAST")
-            end
-          elsif sort_column.is_a? Array
-            sort_column.each do |column|
-              result = result.safe_order(column, order)
-            end
-          else
-            result = result.order("#{sort_column} #{order} NULLS LAST")
-          end
-
-        end
-
-        result
-      }
-
+    def order_names(config)
+      @order_by_config = config
     end
+
+    attr_reader :order_by_config
 
   end
 
