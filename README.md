@@ -24,7 +24,7 @@ sed -i -e 's/RAILS_ENV=.*/RAILS_ENV=production/' .env
 sed -i -e "s/SECRET_KEY_BASE=.*/SECRET_KEY_BASE=$(cat /dev/urandom | tr -dc 'a-f0-9' | head -c 128)/" .env
 docker-compose build
 docker-compose run --rm app bash
-/app$ bundle install
+/app$ bundle install --without test development
 /app$ yarn
 /app$ rails db:create
 /app$ rails db:migrate
