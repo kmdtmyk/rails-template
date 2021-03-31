@@ -8,21 +8,21 @@ class Notice < ApplicationRecord
   belongs_to_user prefix: :create
   belongs_to_user prefix: :update
 
-  search_scope :search_scope do
+  search_scope :keyword_search do
     attributes :title, :body
   end
 
-  scope :search, -> (params) {
+  scope :search, ->(params){
     result = self
 
     if params[:q].present?
-      result = search_scope(params[:q])
+      result = result.keyword_search(params[:q])
     end
 
     result
   }
 
-  scope :published, -> {
+  scope :published, ->{
     now = Time.current
     self
       .where('publish_start_datetime < ?', now)

@@ -1,4 +1,4 @@
-FROM ruby:2.6.6-alpine3.11
+FROM ruby:2.7.2-alpine3.12
 
 RUN echo 'Set disable_coredump false' >> /etc/sudo.conf
 
@@ -6,8 +6,6 @@ RUN apk update && \
     apk add \
     # nokogiri
     build-base \
-    libxml2-dev \
-    libxslt-dev \
     # postgresql
     postgresql-dev \
     # others

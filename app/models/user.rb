@@ -39,15 +39,15 @@ class User < ApplicationRecord
 
   end
 
-  search_scope :search_scope do
+  search_scope :keyword_search do
     attributes :username, :search_name, :search_furigana
   end
 
-  scope :search, -> (params) {
+  scope :search, ->(params){
     result = self
 
     if params[:q].present?
-      result = search_scope(SearchText.normalize(params[:q]))
+      result = result.keyword_search(SearchText.normalize(params[:q]))
     end
 
     result
