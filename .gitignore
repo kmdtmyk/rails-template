@@ -43,6 +43,7 @@
 # backup
 /backup/*
 !/backup/.keep
+!/backup/README.md
 
 # webpacker
 /public/packs
