@@ -855,6 +855,11 @@
   resolved "https://registry.yarnpkg.com/@kmdtmyk/midnight/-/midnight-0.3.3.tgz#2c667eb4ca2f2fc382650413aaf5a85a587955aa"
   integrity sha512-iUfeYshmxcUZzHvOWsl2JIKlAACrMW6bCpQqOXEaqJCljwSdF+mgwpLk8i1bwcBpLaMi3bf9Blzm/qW4ca8Zjg==
 
+"@kmdtmyk/ruby-date@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@kmdtmyk/ruby-date/-/ruby-date-0.1.0.tgz#799a7e027cf14818ea1916d36e6db074d19796a2"
+  integrity sha512-6wHglgaSqBJKE+UEZ4W6Fs/lKOgPn0SKYRjeDMxTlhGxiXXm1JwOkSs0VeLqWWp83qIAzozrTpGrGQvpAfom4g==
+
 "@kmdtmyk/vue-fields@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@kmdtmyk/vue-fields/-/vue-fields-0.2.5.tgz#dcd76d4214567834f3a5aa5c0ef36c4bb0f80ce1"

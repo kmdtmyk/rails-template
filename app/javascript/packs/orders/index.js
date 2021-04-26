@@ -1,33 +1,22 @@
-import Midnight from '@kmdtmyk/midnight'
-import dateformat from 'dateformat'
+import RubyDate from '@kmdtmyk/ruby-date'
 
-const fromToDate = (name) => {
+const fromDate = document.querySelector(`[name=from_date]`)
+const toDate = document.querySelector(`[name=to_date]`)
 
-  const fromDate = document.querySelector(`[name=from_${name}]`)
-  const toDate = document.querySelector(`[name=to_${name}]`)
+document.querySelector(`[name=date_today]`).addEventListener('click', (e) => {
+  const today = RubyDate.today()
+  fromDate.value = today
+  toDate.value = today
+})
 
-  const setValue = (input, date) => {
-    input.value = dateformat(date, 'yyyy-mm-dd')
-  }
+document.querySelector(`[name=date_week]`).addEventListener('click', (e) => {
+  const today = RubyDate.today()
+  fromDate.value = today.nextDay(-7)
+  toDate.value = today
+})
 
-  document.querySelector(`[name=${name}_today]`).addEventListener('click', (e) => {
-    const today = Midnight.today()
-    setValue(fromDate, today)
-    setValue(toDate, today)
-  })
-
-  document.querySelector(`[name=${name}_week]`).addEventListener('click', (e) => {
-    const today = Midnight.today()
-    setValue(fromDate, today.nextDay(-7))
-    setValue(toDate, today)
-  })
-
-  document.querySelector(`[name=${name}_month]`).addEventListener('click', (e) => {
-    const today = Midnight.today()
-    setValue(fromDate, today.nextMonth(-1))
-    setValue(toDate, today)
-  })
-
-}
-
-fromToDate('date')
+document.querySelector(`[name=date_month]`).addEventListener('click', (e) => {
+  const today = RubyDate.today()
+  fromDate.value = today.nextMonth(-1)
+  toDate.value = today
+})
