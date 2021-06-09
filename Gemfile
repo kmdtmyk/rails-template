@@ -32,7 +32,7 @@ gem 'slim', '~> 4.1'
 gem 'gretel', '~> 4.2'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'jwt', '~> 2.2', '>= 2.2.2'
-gem 'search_cop', '~> 1.1'
+gem 'search_cop', '~> 1.2'
 gem 'gon', '~> 6.4'
 gem 'active_model_serializers', '~> 0.10.12'
 
