@@ -18,4 +18,7 @@ environment.config.merge({
   },
 })
 
+// https://webpack.js.org/plugins/split-chunks-plugin/
+environment.splitChunks()
+
 module.exports = environment
