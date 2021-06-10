@@ -41,6 +41,9 @@ class CsvGenerator::Base
               if value.class == String
                 # 互換性のない文字を変換する
                 value.encode(encoding, undef: :replace)
+              elsif value.class == ActiveSupport::SafeBuffer
+                # htmlタグを普通の文字列だけにする
+                ActionController::Base.helpers.strip_tags(value).encode(encoding, undef: :replace)
               else
                 value
               end

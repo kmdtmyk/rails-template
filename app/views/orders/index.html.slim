@@ -40,4 +40,4 @@
             td.btn-cell= edit_link_to 'Edit', edit_order_path(order)
             td.btn-cell= delete_link_to 'Delete', order
 
-= javascript_pack_tag 'orders/index'
+= javascript_packs_with_chunks_tag 'orders/index'
