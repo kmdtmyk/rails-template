@@ -15,3 +15,7 @@
       = form.datetime_field :publish_end_datetime
 
   = form.submit
+
+- unless notice.new_record?
+  .mt-4
+    = render 'shared/housekeeping', record: notice
