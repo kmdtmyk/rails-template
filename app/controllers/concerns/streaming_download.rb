@@ -18,4 +18,15 @@ module StreamingDownload
 
   end
 
+  # ActionController::Liveとdeviseのauthenticate_user!を同時に使うとエラーになる問題の対策
+  def process(name)
+    super(name)
+  rescue ArgumentError => e
+    if e.message == 'uncaught throw :warden'
+      throw :warden
+    else
+      raise e
+    end
+  end
+
 end
