@@ -5,21 +5,9 @@
     order-form(v-model='order' :items='items')
     = f.submit
 
-    - unless order.new_record?
-      .mt-4
-        dl.attributes.attributes-small
-          div
-            dt 作成者
-            dd= order.create_user_name
-          div
-            dt 作成日時
-            dd= format_datetime order.created_at
-          div
-            dt 更新者
-            dd= order.update_user_name
-          div
-            dt 更新日時
-            dd= format_datetime order.updated_at
+  - unless order.new_record?
+    .mt-4
+      = render 'shared/housekeeping', record: order
 
 / = form_with(model: order) do |f|
 /   = hidden_referrer

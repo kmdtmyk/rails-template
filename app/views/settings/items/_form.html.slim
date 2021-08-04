@@ -1,0 +1,17 @@
+= form_with(model: [:settings, item]) do |form|
+  = hidden_referrer
+  .form-row
+    .form-group
+      = form.label :name
+      = form.text_field :name
+    .form-group
+      = form.label :furigana
+      = form.text_field :furigana
+    .form-group
+      = form.label :price
+      = form.number_field :price
+  = form.submit
+
+- unless item.new_record?
+  .mt-4
+    = render 'shared/housekeeping', record: item

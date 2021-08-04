@@ -11,6 +11,15 @@ module LinkToHelper
     link_to name, url, options
   end
 
+  def show_link_to(name, url, options = nil)
+    option ||= {}
+    default_option = {
+      class: 'btn btn-info',
+    }
+    options = default_option.merge(option)
+    link_to name, url, options
+  end
+
   def edit_link_to(name, url, options = nil)
     option ||= {}
     default_option = {
