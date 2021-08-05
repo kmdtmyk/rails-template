@@ -35,14 +35,13 @@ crumb :book_edit do
 end
 
 
-
+# お知らせ
 crumb :notices do
   link 'お知らせ一覧', notices_path
   parent :root
 end
 
-
-
+# 設定 / ユーザ
 crumb :settings_users do
   link 'ユーザ一覧', settings_users_path
   parent :root
@@ -58,8 +57,7 @@ crumb :settings_user_edit do
   parent :settings_users
 end
 
-
-
+# 設定 / お知らせ
 crumb :settings_notices do
   link 'お知らせ一覧', settings_notices_path
   parent :root
@@ -75,8 +73,7 @@ crumb :settings_notice_edit do
   parent :settings_notices
 end
 
-
-
+# 設定 / 商品
 crumb :settings_items do
   link '商品一覧', settings_items_path
   parent :root
