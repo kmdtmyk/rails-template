@@ -19,8 +19,7 @@ docker-compose up
 git clone <url>
 cd <name>
 cp .env.development .env
-sed -i -e 's/COMPOSE_FILE=.*/COMPOSE_FILE=docker-compose.production.yml/' .env
-sed -i -e 's/RAILS_ENV=.*/RAILS_ENV=production/' .env
+sed -i -e 's/COMPOSE_FILE=.*/COMPOSE_FILE=docker-compose.yml:docker-compose.production.yml/' .env
 sed -i -e "s/SECRET_KEY_BASE=.*/SECRET_KEY_BASE=$(cat /dev/urandom | tr -dc 'a-f0-9' | head -c 128)/" .env
 sed -i -e "s/APP_UID=.*/APP_UID=$(id -u)/" .env
 sed -i -e "s/APP_GID=.*/APP_GID=$(id -g)/" .env
