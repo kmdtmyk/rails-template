@@ -42,6 +42,8 @@ gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '687785ff5994bdec35
 # https://github.com/rack/rack/issues/1619
 gem 'rack', '~> 2.1.4'
 
+# gem 'google-cloud-storage', '~> 1.34', '>= 1.34.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
