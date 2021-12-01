@@ -48,7 +48,9 @@ module ExtendOrder
 
         sort_column = config[sort]
 
-        if sort_column.nil?
+        if sort_column.respond_to?(:call)
+          result = instance_exec(order, &sort_column)
+        elsif sort_column.nil?
           result = result.safe_order(sort, order)
         elsif sort_column.is_a? Hash
           sort_column.each do |table, column|

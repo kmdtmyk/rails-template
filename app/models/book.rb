@@ -14,7 +14,9 @@ class Book < ApplicationRecord
   belongs_to_user prefix: :update
 
   order_names(
-    update_user: 'users.name'
+    update_user: ->(order){
+      left_join_as(:update_user).order("update_user.name #{order} NULLS LAST")
+    }
   )
 
   scope :search, ->(query){
