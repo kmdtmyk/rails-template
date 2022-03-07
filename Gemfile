@@ -66,7 +66,7 @@ group :development do
 
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'binding_of_caller', '~> 1.0'
-  gem 'bullet', '~> 6.0', '>= 6.0.1'
+  gem 'bullet', '~> 7.0', '>= 7.0.1'
 end
 
 group :test do
