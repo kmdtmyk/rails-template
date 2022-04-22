@@ -29,7 +29,7 @@ gem 'bootsnap', '~> 1.11', '>= 1.11.1', require: false
 gem 'rack-dev-mark', '~> 0.7.9'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'slim', '~> 4.1'
-gem 'gretel', '~> 4.2'
+gem 'gretel', '~> 4.4'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'jwt', '~> 2.2', '>= 2.2.2'
 gem 'search_cop', '~> 1.2'
