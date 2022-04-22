@@ -24,7 +24,7 @@ gem 'webpacker', '~> 5.4'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '~> 1.11', '>= 1.11.1', require: false
 
 gem 'rack-dev-mark', '~> 0.7.9'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
