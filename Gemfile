@@ -27,7 +27,7 @@ gem 'webpacker', '~> 5.4'
 gem 'bootsnap', '~> 1.11', '>= 1.11.1', require: false
 
 gem 'rack-dev-mark', '~> 0.7.9'
-gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'slim', '~> 4.1'
 gem 'gretel', '~> 4.2'
 gem 'devise', '~> 4.7', '>= 4.7.3'
