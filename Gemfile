@@ -38,10 +38,6 @@ gem 'active_model_serializers', '~> 0.10.12'
 
 gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '687785ff5994bdec356950e25c76a7e208d2d9d4'
 
-# Avoid rack 2.2.x bug
-# https://github.com/rack/rack/issues/1619
-gem 'rack', '~> 2.1.4'
-
 # gem 'google-cloud-storage', '~> 1.34', '>= 1.34.1'
 
 group :development, :test do
