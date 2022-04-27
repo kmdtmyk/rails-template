@@ -12,11 +12,10 @@
       == last_page_tag unless current_page.last?
 
   ruby:
-    first_page_url = Kaminari::Helpers::FirstPage.new(@template, @options).url
-    prev_page_url = Kaminari::Helpers::PrevPage.new(@template, @options).url
-    next_page_url = Kaminari::Helpers::NextPage.new(@template, @options).url
-    last_page_url = Kaminari::Helpers::LastPage.new(@template, @options).url
-    total_page = @options[:total_pages]
+    first_page_url = first_page_tag.url
+    prev_page_url = prev_page_tag.url
+    next_page_url = next_page_tag.url
+    last_page_url = last_page_tag.url
 
   nav.d-md-none
     ul.pagination
@@ -28,7 +27,7 @@
           i.fas.fa-angle-left
       li.page-item.flex-fill.text-center.disabled
         span.page-link.text-body
-          = "#{format_number current_page.number} / #{format_number total_page}"
+          = "#{format_number current_page.number} / #{format_number total_pages}"
       li.page-item.flex-fill.text-center class=('disabled' if current_page.last?)
         a.page-link href=next_page_url
           i.fas.fa-angle-right
