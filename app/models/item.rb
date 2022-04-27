@@ -10,8 +10,10 @@ class Item < ApplicationRecord
   belongs_to_user prefix: :update
 
   order_names(
-    create_user: { create_user: :name },
-    update_user: { update_user: :name },
+    update_user: ->(order){
+      left_join_as(:update_user)
+        .order("update_user.name #{order}")
+    },
   )
 
   search_scope :keyword_search do
