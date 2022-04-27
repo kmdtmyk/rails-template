@@ -28,4 +28,23 @@ module UrlHelper
     url_for(params: query_hash.merge(sort: name))
   end
 
+  def csv_url(options = nil)
+    url = url_for(format: :csv)
+
+    query = URI.parse(request.url).query
+    if query.present?
+      url = url + '?' + query
+    end
+
+    if options.present?
+      if url.include? '?'
+        url = url + '&' + options.to_query
+      else
+        url = url + '?' + options.to_query
+      end
+    end
+
+    url
+  end
+
 end
