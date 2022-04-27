@@ -12,7 +12,7 @@ gem 'puma', '5.6.4'
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.4'
+gem 'webpacker', '~> 5.4', '>= 5.4.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.9', '>= 2.9.1'
 # Use Redis adapter to run Action Cable in production
