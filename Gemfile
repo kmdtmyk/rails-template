@@ -1,18 +1,18 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.4'
+ruby '3.0.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1', '>= 6.1.4'
+gem 'rails', '~> 6.1', '>= 6.1.5.1'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.2', '>= 1.2.3'
+gem 'pg', '~> 1.3', '>= 1.3.5'
 # Use Puma as the app server
-gem 'puma', '5.3.1'
+gem 'puma', '5.6.4'
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.4'
+gem 'webpacker', '~> 5.4', '>= 5.4.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.9', '>= 2.9.1'
 # Use Redis adapter to run Action Cable in production
@@ -24,12 +24,12 @@ gem 'webpacker', '~> 5.4'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '~> 1.11', '>= 1.11.1', require: false
 
 gem 'rack-dev-mark', '~> 0.7.9'
-gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'slim', '~> 4.1'
-gem 'gretel', '~> 4.2'
+gem 'gretel', '~> 4.4'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'jwt', '~> 2.2', '>= 2.2.2'
 gem 'search_cop', '~> 1.2'
@@ -38,15 +38,14 @@ gem 'active_model_serializers', '~> 0.10.12'
 
 gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '687785ff5994bdec356950e25c76a7e208d2d9d4'
 
-# Avoid rack 2.2.x bug
-# https://github.com/rack/rack/issues/1619
-gem 'rack', '~> 2.1.4'
+# gem 'google-cloud-storage', '~> 1.34', '>= 1.34.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
-  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+  gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
+  gem 'rexml', '~> 3.2', '>= 3.2.5'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.18'
@@ -64,7 +63,7 @@ group :development do
 
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'binding_of_caller', '~> 1.0'
-  gem 'bullet', '~> 6.0', '>= 6.0.1'
+  gem 'bullet', '~> 7.0', '>= 7.0.1'
 end
 
 group :test do

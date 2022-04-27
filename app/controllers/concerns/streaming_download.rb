@@ -11,6 +11,8 @@ module StreamingDownload
       filename = ERB::Util.url_encode(filename)
       response.headers['Content-Disposition'] = "attachment; filename=\"#{filename}\""
       response.headers['Content-Type'] = 'text/event-stream'
+      # https://github.com/rack/rack/issues/1619#issuecomment-848460528
+      response.headers['Last-Modified'] = Time.current.httpdate
       yield response.stream
     ensure
       response.stream.close

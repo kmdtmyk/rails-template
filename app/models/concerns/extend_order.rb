@@ -46,22 +46,10 @@ module ExtendOrder
           'ASC'
         end
 
-        sort_column = config[sort]
-
-        if sort_column.nil?
-          result = result.safe_order(sort, order)
-        elsif sort_column.is_a? Hash
-          sort_column.each do |table, column|
-            result = result
-              .left_join_as(table)
-              .order("\"#{table}\".\"#{column}\" #{order} NULLS LAST")
-          end
-        elsif sort_column.is_a? Array
-          sort_column.each do |column|
-            result = result.safe_order(column, order)
-          end
+        if config[sort].present?
+          result = result.instance_exec(order, &config[sort])
         else
-          result = result.order("#{sort_column} #{order} NULLS LAST")
+          result = result.safe_order(sort, order)
         end
 
       end

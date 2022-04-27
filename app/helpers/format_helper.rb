@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module FormatHelper
+  include ActionView::Helpers::NumberHelper
 
   def format_date(date, format = '%Y/%m/%d')
     return if date.nil?

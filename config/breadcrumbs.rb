@@ -3,14 +3,12 @@ crumb :root do
 end
 
 
-
 crumb :notices do
   link 'お知らせ一覧', notices_path
   parent :root
 end
 
-
-
+# 設定 / ユーザ
 crumb :settings_users do
   link 'ユーザ一覧', settings_users_path
   parent :root
@@ -26,8 +24,7 @@ crumb :settings_user_edit do
   parent :settings_users
 end
 
-
-
+# 設定 / お知らせ
 crumb :settings_notices do
   link 'お知らせ一覧', settings_notices_path
   parent :root
