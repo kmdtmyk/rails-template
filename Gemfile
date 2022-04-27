@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.4'
+ruby '3.0.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1', '>= 6.1.4.7'
@@ -45,6 +45,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
+  gem 'rexml', '~> 3.2', '>= 3.2.5'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.18'

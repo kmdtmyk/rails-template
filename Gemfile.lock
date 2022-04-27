@@ -222,6 +222,7 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rexml (3.2.5)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
     rspec-expectations (3.11.0)
@@ -321,6 +322,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.3, >= 2.3.2)
   rails (~> 6.1, >= 6.1.4.7)
   rails-controller-testing (~> 1.0, >= 1.0.5)
+  rexml (~> 3.2, >= 3.2.5)
   rparam!
   rspec-rails (~> 5.1, >= 5.1.1)
   sassc-rails (~> 2.1)
@@ -333,7 +335,7 @@ DEPENDENCIES
   webpacker (~> 5.4)
 
 RUBY VERSION
-   ruby 2.7.4p191
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.1.4
+   2.2.32
