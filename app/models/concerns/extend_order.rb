@@ -46,7 +46,7 @@ module ExtendOrder
           'ASC'
         end
 
-         if config[sort].present?
+        if config[sort].present?
           result = result.instance_exec(order, &config[sort])
         else
           result = result.safe_order(sort, order)
