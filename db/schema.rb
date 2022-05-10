@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_023142) do
     t.text "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_type", "user_id"], name: "index_rparam_memories_on_user_type_and_user_id"
+    t.index ["user_type", "user_id"], name: "index_rparam_memories_on_user"
   end
 
   create_table "users", comment: "ユーザ", force: :cascade do |t|
