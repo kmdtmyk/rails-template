@@ -3,23 +3,35 @@
 module CoalesceAttribute
   extend ActiveSupport::Concern
 
-  included do
+  class_methods do
 
+    # sqlのcoalesceと同じような動きをするカラム
     def coalesce_attribute(name, attributes)
-      attributes.each do |attribute|
 
-        value = read_attribute(attribute)
-        if value.blank?
-          next
-        end
-
-        write_attribute(name, value)
-        return
+      before_validation do
+        write_attribute(name, CoalesceAttribute.read(self, attributes))
       end
 
-      write_attribute(name, nil)
+      define_method name do
+        CoalesceAttribute.read(self, attributes)
+      end
+
     end
 
+  end
+
+  def self.read(object, attributes)
+    attributes.each do |attribute|
+
+      value = object.read_attribute(attribute)
+
+      unless value.blank?
+        return value
+      end
+
+    end
+
+    return nil
   end
 
 end
