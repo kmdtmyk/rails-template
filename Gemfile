@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1', '>= 6.1.5.1'
+gem 'rails', '~> 6.1', '>= 6.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.3', '>= 1.3.5'
 # Use Puma as the app server
@@ -36,7 +36,7 @@ gem 'search_cop', '~> 1.2'
 gem 'gon', '~> 6.4'
 gem 'active_model_serializers', '~> 0.10.12'
 
-gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '687785ff5994bdec356950e25c76a7e208d2d9d4'
+gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '1c722e94b6d691bb2dd6321980126de5ed367a8b'
 
 # gem 'google-cloud-storage', '~> 1.34', '>= 1.34.1'
 

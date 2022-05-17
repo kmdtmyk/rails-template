@@ -1,4 +1,4 @@
-class CreateTables < ActiveRecord::Migration[6.0]
+class CreateTables < ActiveRecord::Migration[6.1]
   def change
 
     create_table :notices, comment: 'お知らせ' do |t|
