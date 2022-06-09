@@ -35,6 +35,7 @@ gem 'jwt', '~> 2.2', '>= 2.2.2'
 gem 'search_cop', '~> 1.2'
 gem 'gon', '~> 6.4'
 gem 'active_model_serializers', '~> 0.10.12'
+gem 'faker', '~> 2.18'
 
 gem 'rparam', git: 'https://github.com/kmdtmyk/rparam', ref: '1c722e94b6d691bb2dd6321980126de5ed367a8b'
 
@@ -48,7 +49,6 @@ group :development, :test do
   gem 'rexml', '~> 3.2', '>= 3.2.5'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'factory_bot_rails', '~> 6.2'
-  gem 'faker', '~> 2.18'
 end
 
 group :development do
