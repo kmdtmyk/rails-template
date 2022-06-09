@@ -2,19 +2,19 @@
 
 require 'rails_helper'
 
-RSpec.describe Api::V1::LoginsController, type: :controller do
+RSpec.describe Api::V1::LoginsController, type: :request do
 
-  describe '#create' do
+  describe 'create' do
 
     before do
       User.create(username: 'user1', password: 'pass1')
     end
 
     example 'success' do
-      post :create, body: {
+      post api_v1_login_path, params: {
         username: 'user1',
         password: 'pass1',
-      }.to_json, as: :json
+      }.to_json, headers: { 'Content-Type': 'application/json' }
       result = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.status).to eq 200
@@ -22,18 +22,18 @@ RSpec.describe Api::V1::LoginsController, type: :controller do
     end
 
     example 'invalid username' do
-      post :create, body: {
+      post api_v1_login_path, params: {
         username: 'user1',
         password: 'invalid',
-      }.to_json, as: :json
+      }.to_json, headers: { 'Content-Type': 'application/json' }
       expect(response.status).to eq 401
     end
 
     example 'invalid password' do
-      post :create, body: {
+      post api_v1_login_path, params: {
         username: 'invalid',
         password: 'pass1',
-      }.to_json, as: :json
+      }.to_json, headers: { 'Content-Type': 'application/json' }
       expect(response.status).to eq 401
     end
 
