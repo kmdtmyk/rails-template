@@ -10,7 +10,9 @@ class Settings::NoticesController < BaseController
   end
 
   def new
-    @notice = Notice.new
+    @notice = Notice.new(
+      publish_start_datetime: Time.current,
+    )
   end
 
   def edit
