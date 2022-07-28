@@ -1,0 +1,25 @@
+<%# coding: UTF-8 -%>
+## <%= title %>
+<%= description %>
+<%= parameters_section %>
+### Example
+
+#### Request
+```
+<%= method %> <%= request.path %><%= request_query %> <%#= request_http_version %>
+<%= request_header %>
+```
+<% if request_body_section.present? %>
+```<%= request.content_type == 'application/json' ? 'json' : nil %>
+<%= request_body_section.strip %>
+```
+<% end %>
+#### Response
+```
+<%= response_http_version %> <%= response.status %>
+<%= response_header %>
+```
+
+```<%= response.content_type.start_with?('application/json') ? 'json' : nil %>
+<%= response_body_section.strip %>
+```
