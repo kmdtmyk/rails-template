@@ -10,6 +10,7 @@ docker-compose run --rm app bash
 /app$ yarn
 /app$ rails db:create
 /app$ rails db:migrate
+/app$ rails db:seed
 docker-compose up
 ```
 
