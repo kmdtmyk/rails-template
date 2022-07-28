@@ -14,7 +14,7 @@ ruby:
 
 = render_with_pagination items do |items|
   .table-sticky.max-vh-70
-    table.table.table-striped.table-hover
+    table.table.table-striped.table-hover.table-bordered
       thead
         tr
           th= sort_link_to :name
@@ -27,7 +27,7 @@ ruby:
             |Update user
           th= sort_link_to :updated_at
             |Updated at
-          th colspan=2
+          th
       tbody
         - items.each do |item|
           tr
@@ -36,5 +36,6 @@ ruby:
             td= item.price
             td= item.update_user_name
             td= format_datetime item.updated_at
-            td.btn-cell= edit_link_to 'Edit', edit_settings_item_path(item)
-            td.btn-cell= delete_link_to 'Delete', settings_item_path(item)
+            td.btn-cell
+              = edit_link_to 'Edit', edit_settings_item_path(item)
+              = delete_link_to 'Delete', settings_item_path(item)

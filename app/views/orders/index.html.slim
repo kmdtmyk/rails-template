@@ -21,7 +21,7 @@
 
 = render_with_pagination @orders do |orders|
   .table-sticky.max-vh-70
-    table.table.table-striped.table-hover
+    table.table.table-striped.table-hover.table-bordered
       thead
         tr
           th= sort_link_to :date
@@ -37,7 +37,8 @@
             td= format_date order.date
             td= format_number order.total_price
             td= format_datetime order.updated_at
-            td.btn-cell= edit_link_to 'Edit', edit_order_path(order)
-            td.btn-cell= delete_link_to 'Delete', order
+            td.btn-cell
+              = edit_link_to 'Edit', edit_order_path(order)
+              = delete_link_to 'Delete', order
 
 = javascript_packs_with_chunks_tag 'orders/index'
