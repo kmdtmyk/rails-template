@@ -31,7 +31,7 @@ module BelongsToUser
         user = send(name)
 
         if user.nil?
-          ApplicationController.helpers.tag.small '削除済のユーザ'
+          '削除済のユーザ'
         else
           user.name
         end
