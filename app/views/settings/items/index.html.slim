@@ -7,7 +7,7 @@
       .col-10.col-md-5.p-0
         = search_field_tag 'q', params[:q], placeholder: 'Search'
   div
-    = new_link_to 'New', new_settings_item_path
+    = new_link_to 'New', url_for(action: :new)
 
 ruby:
   items = @items.preload(:update_user)

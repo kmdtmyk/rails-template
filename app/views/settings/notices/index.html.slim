@@ -9,7 +9,7 @@
       = submit_tag '検索', class: 'btn btn-info'
 
   div
-    = new_link_to '新規', new_settings_notice_path
+    = new_link_to '新規', url_for(action: :new)
 
 = render_with_pagination @notices do |notices|
   .table-sticky.max-vh-70
