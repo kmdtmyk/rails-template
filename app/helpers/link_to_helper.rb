@@ -31,8 +31,9 @@ module LinkToHelper
 
   def delete_link_to(name, url, option = nil)
     option ||= {}
+
     default_option = {
-      class: 'btn btn-danger',
+      class: ['btn', 'btn-danger'],
       method: :delete,
       data: { title: '確認',
         confirm: '選択した項目を削除しますか？',
@@ -40,7 +41,12 @@ module LinkToHelper
       },
     }
     options = default_option.merge(option)
-    link_to name, url, options
+
+    if option[:disabled] == true
+      tag.a(name, class: 'btn btn-danger disabled')
+    else
+      link_to name, url, options
+    end
   end
 
   def download_link_to(url, options = nil)
