@@ -2,7 +2,7 @@
 
 module LinkToHelper
 
-  def new_link_to(name, url, options = nil)
+  def new_link_to(name, url, option = nil)
     option ||= {}
     default_option = {
       class: 'btn btn-primary',
@@ -11,7 +11,7 @@ module LinkToHelper
     link_to name, url, options
   end
 
-  def show_link_to(name, url, options = nil)
+  def show_link_to(name, url, option = nil)
     option ||= {}
     default_option = {
       class: 'btn btn-info',
@@ -20,7 +20,7 @@ module LinkToHelper
     link_to name, url, options
   end
 
-  def edit_link_to(name, url, options = nil)
+  def edit_link_to(name, url, option = nil)
     option ||= {}
     default_option = {
       class: 'btn btn-primary',
@@ -49,7 +49,7 @@ module LinkToHelper
     end
   end
 
-  def download_link_to(url, options = nil)
+  def download_link_to(url, option = nil)
     option ||= {}
     default_option = {
       class: 'btn btn-info'
