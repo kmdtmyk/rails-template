@@ -8,7 +8,11 @@ module LinkToHelper
       class: 'btn btn-primary',
     }
     options = default_option.merge(option)
-    link_to name, url, options
+    if option[:disabled] == true
+      tag.a(name, class: 'btn btn-primary disabled')
+    else
+      link_to name, url, options
+    end
   end
 
   def show_link_to(name, url, option = nil)
@@ -17,7 +21,11 @@ module LinkToHelper
       class: 'btn btn-info',
     }
     options = default_option.merge(option)
-    link_to name, url, options
+    if option[:disabled] == true
+      tag.a(name, class: 'btn btn-info disabled')
+    else
+      link_to name, url, options
+    end
   end
 
   def edit_link_to(name, url, option = nil)
@@ -26,7 +34,11 @@ module LinkToHelper
       class: 'btn btn-primary',
     }
     options = default_option.merge(option)
-    link_to name, url, options
+    if option[:disabled] == true
+      tag.a(name, class: 'btn btn-primary disabled')
+    else
+      link_to name, url, options
+    end
   end
 
   def delete_link_to(name, url, option = nil)
