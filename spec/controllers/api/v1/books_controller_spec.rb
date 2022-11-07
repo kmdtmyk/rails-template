@@ -2,12 +2,18 @@
 
 require 'rails_helper'
 
-RSpec.describe Api::V1::BooksController, type: :controller do
+RSpec.describe Api::V1::BooksController, type: :request do
+
+  let(:headers) do
+    {
+      'Content-Type': 'application/json',
+    }
+  end
 
   describe '#create' do
 
     example 'create record' do
-      post :create, body: {
+      post api_v1_books_path, params: {
         books: [
           {
             name: 'book1',
@@ -16,7 +22,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
             foo: 123,
           },
         ],
-      }.to_json, as: :json
+      }.to_json, headers: headers
       expect(response.status).to eq 200
       body = JSON.parse(response.body, symbolize_names: true)
       expect(body).to be_a Array
@@ -24,7 +30,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
     end
 
     example 'lower camel case' do
-      post :create, body: {
+      post api_v1_books_path, params: {
         books: [
           {
             name: 'book1',
@@ -33,7 +39,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
             foo: 123,
           },
         ],
-      }.to_json, as: :json
+      }.to_json, headers: headers
       expect(response.status).to eq 200
       body = JSON.parse(response.body, symbolize_names: true)
 
@@ -43,7 +49,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
     end
 
     example 'nested attributes' do
-      post :create, body: {
+      post api_v1_books_path, params: {
         books: [
           {
             name: 'book1',
@@ -54,7 +60,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
             ],
           },
         ],
-      }.to_json, as: :json
+      }.to_json, headers: headers
       expect(response.status).to eq 200
       body = JSON.parse(response.body, symbolize_names: true)
 
@@ -69,7 +75,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
 
     example 'update attributes' do
       book = Book.create(name: 'book1', price: 100, release_date: '2019-10-15')
-      patch :update, params: { id: book.id }, body: {
+      patch api_v1_book_path(book), params: {
         book: {
           id: book.id,
           name: 'book2',
@@ -77,7 +83,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
           release_date: '2019-10-20',
           foo: 123,
         }
-      }.to_json, as: :json
+      }.to_json, headers: headers
       book.reload
       expect(book.name).to eq 'book2'
       expect(book.price).to eq 200
@@ -89,7 +95,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
       review1 = book.reviews.create(content: '1')
       review2 = book.reviews.create(content: '2')
       review3 = book.reviews.create(content: '3')
-      patch :update, params: { id: book.id }, body: {
+      patch api_v1_book_path(book), params: {
         book: {
           id: book.id,
           reviews: [
@@ -98,7 +104,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
             { content: 'new review' },
           ]
         }
-      }.to_json, as: :json
+      }.to_json, headers: headers
       book.reload
       review1.reload
       expect(book.reviews.count).to eq 2
