@@ -2,37 +2,50 @@
 
 module LinkToHelper
 
-  def new_link_to(name, url, options = nil)
+  def new_link_to(name, url, option = nil)
     option ||= {}
     default_option = {
       class: 'btn btn-primary',
     }
     options = default_option.merge(option)
-    link_to name, url, options
+    if option[:disabled] == true
+      tag.a(name, class: 'btn btn-primary disabled')
+    else
+      link_to name, url, options
+    end
   end
 
-  def show_link_to(name, url, options = nil)
+  def show_link_to(name, url, option = nil)
     option ||= {}
     default_option = {
       class: 'btn btn-info',
     }
     options = default_option.merge(option)
-    link_to name, url, options
+    if option[:disabled] == true
+      tag.a(name, class: 'btn btn-info disabled')
+    else
+      link_to name, url, options
+    end
   end
 
-  def edit_link_to(name, url, options = nil)
+  def edit_link_to(name, url, option = nil)
     option ||= {}
     default_option = {
       class: 'btn btn-primary',
     }
     options = default_option.merge(option)
-    link_to name, url, options
+    if option[:disabled] == true
+      tag.a(name, class: 'btn btn-primary disabled')
+    else
+      link_to name, url, options
+    end
   end
 
   def delete_link_to(name, url, option = nil)
     option ||= {}
+
     default_option = {
-      class: 'btn btn-danger',
+      class: ['btn', 'btn-danger'],
       method: :delete,
       data: { title: '確認',
         confirm: '選択した項目を削除しますか？',
@@ -40,10 +53,15 @@ module LinkToHelper
       },
     }
     options = default_option.merge(option)
-    link_to name, url, options
+
+    if option[:disabled] == true
+      tag.a(name, class: 'btn btn-danger disabled')
+    else
+      link_to name, url, options
+    end
   end
 
-  def download_link_to(url, options = nil)
+  def download_link_to(url, option = nil)
     option ||= {}
     default_option = {
       class: 'btn btn-info'

@@ -19,37 +19,37 @@ module ExtendNestedAttributes
       end
 
       attr_names.each do |name|
-
         define_method("#{name}_attributes=") do |attributes|
-
-          if attributes.is_a?(Hash)
-            attributes = attributes.map do |index, hash|
-              hash
-            end
-          end
-
-          if self.new_record?
-            attributes.each do |attribute|
-              attribute.delete(:id)
-            end
-          end
-
-          if auto_destroy
-            destroy_ids = send(name).ids - attributes.pluck(:id).map(&:to_i)
-            destroy_attributes = destroy_ids.map do |id|
-              { id: id, _destroy: true }
-            end
-
-            attributes = attributes + destroy_attributes
-          end
-
-          super(attributes)
+          super(ExtendNestedAttributes.add_destroy_attributes(self, name, attributes))
         end
-
       end
 
     end
 
+  end
+
+  # attributesに含まれなかったレコード削除するように { id, _destroy } を追加する
+  def self.add_destroy_attributes(record, name, attributes)
+
+    if attributes.is_a?(Hash)
+      attributes = attributes.map do |index, hash|
+        hash
+      end
+    end
+
+    if record.new_record?
+      attributes.each do |attribute|
+        # 新規の時にidがあっても邪魔なだけなので削除する
+        attribute.delete(:id)
+      end
+    end
+
+    destroy_ids = record.send(name).ids - attributes.pluck(:id).map(&:to_i)
+    destroy_attributes = destroy_ids.map do |id|
+      { id: id, _destroy: true }
+    end
+
+    attributes + destroy_attributes
   end
 
 end
