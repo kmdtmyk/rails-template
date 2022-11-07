@@ -2,8 +2,8 @@
 
 class User < ApplicationRecord
   include ExtendOrder
+  include SearchAttribute
   include SearchCop
-  include SetSearchText
 
   devise(
     :database_authenticatable,
@@ -24,11 +24,6 @@ class User < ApplicationRecord
   acts_as_rparam_user
 
   before_save do
-
-    set_search_text(
-      name: :search_name,
-      furigana: :search_furigana,
-    )
 
     if encrypted_password_changed?
       self.password_change_datetime = Time.current
@@ -73,5 +68,10 @@ class User < ApplicationRecord
     }
     JWT.encode(payload, ENV['SECRET_KEY_BASE'])
   end
+
+  search_attribute(
+    name: :search_name,
+    furigana: :search_furigana,
+  )
 
 end
