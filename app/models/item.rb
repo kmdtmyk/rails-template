@@ -3,8 +3,8 @@
 class Item < ApplicationRecord
   include ExtendOrder
   include BelongsToUser
+  include SearchAttribute
   include SearchCop
-  include SetSearchText
 
   belongs_to_user prefix: :create
   belongs_to_user prefix: :update
@@ -30,11 +30,9 @@ class Item < ApplicationRecord
     result
   }
 
-  before_save do
-    set_search_text(
-      name: :search_name,
-      furigana: :search_furigana,
-    )
-  end
+  search_attribute(
+    name: :search_name,
+    furigana: :search_furigana,
+  )
 
 end
