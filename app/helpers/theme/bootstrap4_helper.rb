@@ -9,11 +9,13 @@ module Theme::Bootstrap4Helper
 
   def date_field(*args)
     set_default_classes(args, 2, %w(form-control))
+    args[2][:max] = '9999-12-31'
     super
   end
 
   def datetime_field(*args)
     set_default_classes(args, 2, %w(form-control))
+    args[2][:max] = '9999-12-31T23:59:59'
     super
   end
 

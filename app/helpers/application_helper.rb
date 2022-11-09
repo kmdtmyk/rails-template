@@ -11,4 +11,10 @@ module ApplicationHelper
     hidden_field_tag 'referrer', value, id: nil
   end
 
+  def date_field_tag(*args)
+    args[2] ||= {}
+    args[2][:max] = '9999-12-31'
+    super
+  end
+
 end
