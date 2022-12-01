@@ -17,4 +17,13 @@ module ApplicationHelper
     super
   end
 
+  # 引数がnilの時エラーにならないようにしたやつ
+  def l(object, **options)
+    if object.nil?
+      return
+    end
+
+    super
+  end
+
 end
