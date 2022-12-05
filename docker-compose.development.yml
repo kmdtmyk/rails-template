@@ -3,9 +3,10 @@ services:
   app:
     environment:
       RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_PUBLIC: '0.0.0.0:${WEBPACK_DEV_SERVER_PORT}'
     command: bash -c 'rm -f tmp/pids/server.pid; rails s -b 0.0.0.0 & bin/webpack-dev-server'
     ports:
-      - 3035:3035
+      - '${WEBPACK_DEV_SERVER_PORT}:3035'
   db:
     ports:
       - '${PUBLISH_DATABASE_PORT}:5432'
