@@ -41,6 +41,8 @@ crumb :settings_notice_edit do
 end
 
 
+
+# crumb :projects do
 #   link "Projects", projects_path
 # end
 
