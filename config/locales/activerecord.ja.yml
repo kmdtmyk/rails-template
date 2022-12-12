@@ -4,8 +4,8 @@ ja:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+          has_one: "%{record}が登録されているため削除できませんでした"
+          has_many: "%{record}が登録されているため削除できませんでした"
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
