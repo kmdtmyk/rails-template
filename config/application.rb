@@ -27,9 +27,9 @@ module App
     config.action_view.form_with_generates_remote_forms = false
     config.active_storage.routes_prefix = :files
 
-    # Don't generate system test files.
+    # Don't generate test files.
     config.generators.system_tests = nil
-
+    config.generators.factory_bot false
 
     # rack dev mark
     if ENV['RACK_DEV_MARK'].present?
