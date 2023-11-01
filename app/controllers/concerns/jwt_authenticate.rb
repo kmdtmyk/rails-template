@@ -10,7 +10,7 @@ module JwtAuthenticate
   end
 
   def current_user
-    if auth_token.nil?
+    if auth_token.nil? || auth_token[:jti].blank?
       return
     end
 
