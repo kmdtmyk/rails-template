@@ -9,7 +9,7 @@
     "@rails/activestorage": "^6.1.7",
     "@rails/ujs": "^6.1.7",
     "@rails/webpacker": "5.4.3",
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "typescript": "^4.7.4",
